@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Апат — Естелік архиві</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../CSS/header.css">
+</head>
+<body>
+    <div id="root">
+
+        <div class="ornament ornament-left"  aria-hidden="true"></div>
+        <div class="ornament ornament-right" aria-hidden="true"></div>
+
+        <header>
+            <div class="header-inner">
+                <div class="logo">
+                    <span class="logo-title">Апат</span>
+                    <span class="logo-sub">Естелік архиві</span>
+                </div>
+                <nav>
+                    <a href="#" data-i18n="nav_articles">Мақалалар</a>
+                    <a href="#" data-i18n="nav_about">Жоба туралы</a>
+                </nav>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="kk">ҚАЗ</button>
+                    <button class="lang-btn"        data-lang="ru">РУС</button>
+                    <button class="lang-btn"        data-lang="en">ENG</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero x-center y-center">
+                <div class="hero-content">
+                    <h1 class="hero-title" data-i18n="hero_title">Естелік сақталуы тиіс</h1>
+                    <p class="hero-sub"   data-i18n="hero_sub">Репрессия, полигон және голодомор құрбандарының тарихи куәліктері</p>
+                    <div class="search-wrapper">
+                        <textarea
+                            name="search"
+                            id="searchInput"
+                            rows="1"
+                            placeholder="Мақала іздеу..."
+                            data-i18n-ph="search_placeholder"
+                        ></textarea>
+                        <button class="search-btn">→</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="recent-section">
+                <div class="section-inner">
+                    <h2 class="section-title" data-i18n="section_recent">Соңғы мақалалар</h2>
+                    <div class="articles-list">
+
+                        <a href="#" class="article-item">
+                            <span class="article-tag tag-repression" data-i18n="tag_repression">Репрессия</span>
+                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
+                            <span class="article-item-date">2026</span>
+                        </a>
+
+                        <a href="#" class="article-item">
+                            <span class="article-tag tag-polygon" data-i18n="tag_polygon">Полигон</span>
+                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
+                            <span class="article-item-date">2026</span>
+                        </a>
+
+                        <a href="#" class="article-item">
+                            <span class="article-tag tag-famine" data-i18n="tag_famine">Голодомор</span>
+                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
+                            <span class="article-item-date">2026</span>
+                        </a>
+
+                        <a href="#" class="article-item">
+                            <span class="article-tag tag-repression" data-i18n="tag_repression">Репрессия</span>
+                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
+                            <span class="article-item-date">2026</span>
+                        </a>
+
+                        <a href="#" class="article-item">
+                            <span class="article-tag tag-polygon" data-i18n="tag_polygon">Полигон</span>
+                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
+                            <span class="article-item-date">2026</span>
+                        </a>
+
+                        <a href="#" class="article-item">
+                            <span class="article-tag tag-famine" data-i18n="tag_famine">Голодомор</span>
+                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
+                            <span class="article-item-date">2026</span>
+                        </a>
+                        
+                        <a href="#" class="article-item">
+                            <span class="article-tag tag-repression" data-i18n="tag_repression">Репрессия</span>
+                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
+                            <span class="article-item-date">2026</span>
+                        </a>
+
+                        <a href="#" class="article-item">
+                            <span class="article-tag tag-polygon" data-i18n="tag_polygon">Полигон</span>
+                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
+                            <span class="article-item-date">2026</span>
+                        </a>
+
+                        <a href="#" class="article-item">
+                            <span class="article-tag tag-famine" data-i18n="tag_famine">Голодомор</span>
+                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
+                            <span class="article-item-date">2026</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Тестовый footer, можно убрать или оставить -->
+        <!-- <footer>
+            <div class="footer-inner">
+                <span data-i18n="footer_copy">© 2026 Апат</span>
+                <div class="footer-links">
+                    <a href="#" data-i18n="footer_contact">Байланыс</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </footer> -->
+
+    </div>
+
+    <script src="../JS/i18n.js"></script>
+</body>
+</html>
