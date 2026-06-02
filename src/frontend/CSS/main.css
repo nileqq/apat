@@ -8,12 +8,13 @@
 
 /* ─── Переменные ─────────────────────────────── */
 :root {
-    --color-bg:       #faf9f6;   /* тёплый белый — как старая бумага */
-    --color-text:     #1c1c1c;
-    --color-muted:    #888;
-    --color-border:   #e5e0d8;
-    --color-accent:   #6b2737;   /* тёмно-бордовый */
-    --color-primary:  #1a1a2e;   /* тёмно-синий — для заголовков */
+    --color-bg:       #14110e;   /* тёплый почти-чёрный — как тёмная архивная бумага */
+    --color-surface:  #1e1a16;   /* фон карточек, поля поиска — чуть светлее фона */
+    --color-text:     #e8e2d6;   /* тёплый off-white */
+    --color-muted:    #8f857a;   /* приглушённый бежево-серый */
+    --color-border:   #322b23;   /* тонкие линии на тёмном */
+    --color-accent:   #c97f6e;   /* тёплая терракота — читается на тёмном */
+    --color-primary:  #ede6d8;   /* кремовый — для заголовков */
 
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans:  'Inter', system-ui, sans-serif;
@@ -54,7 +55,7 @@ main {
     width: 80px;
     background: url('../assets/ornament.svg') repeat-y center top;
     background-size: 80px 200px;  /* высота одного тайла = шаг анимации */
-    opacity: 0.5;
+    opacity: 0.28;
     pointer-events: none;
     z-index: 0;
     animation: ornament-flow 8s linear infinite;
@@ -131,7 +132,7 @@ main {
     margin-top: 0.5rem;
     border: 1px solid var(--color-border);
     border-radius: 4px;
-    background: #fff;
+    background: var(--color-surface);
     transition: border-color 0.2s;
 }
 
@@ -153,7 +154,7 @@ main {
 }
 
 #searchInput::placeholder {
-    color: #bbb;
+    color: #6a6258;
 }
 
 .search-btn {
@@ -207,7 +208,7 @@ main {
 
 .article-item:hover {
     padding-left: 0.75rem;
-    background: rgba(107, 39, 55, 0.025);
+    background: rgba(255, 255, 255, 0.03);
 }
 
 .article-tag {
@@ -220,9 +221,9 @@ main {
     border-radius: 2px;
 }
 
-.tag-repression { background: #f5e6e8; color: #6b2737; }
-.tag-polygon    { background: #e6eaf5; color: #1a2d6b; }
-.tag-famine     { background: #f5ede6; color: #6b3d1a; }
+.tag-repression { background: #3a2228; color: #e3a6a6; }
+.tag-polygon    { background: #22293a; color: #a6bce3; }
+.tag-famine     { background: #3a2e22; color: #e3c19c; }
 
 .article-item-title {
     flex: 1;
@@ -238,7 +239,7 @@ main {
 .article-item-date {
     flex-shrink: 0;
     font-size: 0.78rem;
-    color: #bbb;
+    color: #6a6258;
 }
 
 /* ─── Футер ──────────────────────────────────── */
