@@ -3,28 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Апат — Естелік архиві</title>
+    <title>Qazaq Mura — Естелік архиві</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/main.css">
     <link rel="stylesheet" href="../CSS/header.css">
 </head>
 <body>
     <div id="root">
 
-        <!-- <div class="ornament ornament-left"  aria-hidden="true"></div>
-        <div class="ornament ornament-right" aria-hidden="true"></div> -->
-
         <header>
             <div class="header-inner">
-                <div class="logo">
+                <a href="main.html" class="logo">
                     <img class="logo-mark" src="../assets/crow-white-transparent.png" alt="Апат" height="44">
                     <div class="logo-text">
                         <span class="logo-title">Qazaq Mura</span>
                         <span class="logo-sub">Естелік архиві</span>
                     </div>
-                </div>
+                </a>
                 <nav>
                     <a href="#" data-i18n="nav_articles">Мақалалар</a>
                     <a href="#" data-i18n="nav_about">Жоба туралы</a>
@@ -38,99 +35,193 @@
         </header>
 
         <main>
-            <section class="hero x-center y-center">
-                <div class="hero-content">
-                    <h1 class="hero-title" data-i18n="hero_title">Естелік сақталуы тиіс</h1>
-                    <p class="hero-sub"   data-i18n="hero_sub">Репрессия, полигон және голодомор құрбандарының тарихи куәліктері</p>
-                    <div class="search-wrapper">
-                        <textarea
-                            name="search"
-                            id="searchInput"
-                            rows="1"
-                            placeholder="Мақала іздеу..."
-                            data-i18n-ph="search_placeholder"
-                        ></textarea>
-                        <button class="search-btn">→</button>
+
+            <!-- ── Мастхед ──────────────────────────────── -->
+            <div class="masthead">
+                <div class="masthead-inner">
+                    <h1 class="masthead-title" data-i18n="nav_articles">Мақалалар</h1>
+                    <p class="masthead-sub" data-i18n="hero_sub">Репрессия, полигон және голодомор құрбандарының тарихи куәліктері</p>
+
+                    <div class="masthead-controls">
+                        <!-- Фильтр категорий -->
+                        <div class="filter-pills">
+                            <button class="filter-pill active" data-filter="all" data-i18n="filter_all">Барлығы</button>
+                            <button class="filter-pill" data-filter="repression" data-i18n="tag_repression">Репрессия</button>
+                            <button class="filter-pill" data-filter="polygon"    data-i18n="tag_polygon">Полигон</button>
+                            <button class="filter-pill" data-filter="famine"     data-i18n="tag_famine">Голодомор</button>
+                        </div>
+
+                        <!-- Поиск -->
+                        <div class="search-inline">
+                            <input
+                                type="text"
+                                id="searchInput"
+                                placeholder="Іздеу..."
+                                data-i18n-ph="search_placeholder"
+                            >
+                            <button class="search-btn" aria-label="Іздеу">→</button>
+                        </div>
                     </div>
-                </div>
-            </section>
-
-            <section class="recent-section">
-                <div class="section-inner">
-                    <h2 class="section-title" data-i18n="section_recent">Соңғы мақалалар</h2>
-                    <div class="articles-list">
-
-                        <a href="#" class="article-item">
-                            <span class="article-tag tag-repression" data-i18n="tag_repression">Репрессия</span>
-                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
-                            <span class="article-item-date" data-date="2026-06-02">2026</span>
-                        </a>
-
-                        <a href="#" class="article-item">
-                            <span class="article-tag tag-polygon" data-i18n="tag_polygon">Полигон</span>
-                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
-                            <span class="article-item-date" data-date="2026-05-29">2026</span>
-                        </a>
-
-                        <a href="#" class="article-item">
-                            <span class="article-tag tag-famine" data-i18n="tag_famine">Голодомор</span>
-                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
-                            <span class="article-item-date" data-date="2026-05-12">2026</span>
-                        </a>
-
-                        <a href="#" class="article-item">
-                            <span class="article-tag tag-repression" data-i18n="tag_repression">Репрессия</span>
-                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
-                            <span class="article-item-date" data-date="2026-04-08">2026</span>
-                        </a>
-
-                        <a href="#" class="article-item">
-                            <span class="article-tag tag-polygon" data-i18n="tag_polygon">Полигон</span>
-                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
-                            <span class="article-item-date" data-date="2026-01-20">2026</span>
-                        </a>
-
-                        <a href="#" class="article-item">
-                            <span class="article-tag tag-famine" data-i18n="tag_famine">Голодомор</span>
-                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
-                            <span class="article-item-date" data-date="2025-09-15">2026</span>
-                        </a>
-
-                        <a href="#" class="article-item">
-                            <span class="article-tag tag-repression" data-i18n="tag_repression">Репрессия</span>
-                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
-                            <span class="article-item-date" data-date="2025-02-01">2026</span>
-                        </a>
-
-                        <a href="#" class="article-item">
-                            <span class="article-tag tag-polygon" data-i18n="tag_polygon">Полигон</span>
-                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
-                            <span class="article-item-date" data-date="2024-03-10">2026</span>
-                        </a>
-
-                        <a href="#" class="article-item">
-                            <span class="article-tag tag-famine" data-i18n="tag_famine">Голодомор</span>
-                            <span class="article-item-title">Мақала атауы осында болады — қысқаша сипаттама...</span>
-                            <span class="article-item-date" data-date="2022-11-30">2026</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Тестовый footer, можно убрать или оставить -->
-        <!-- <footer>
-            <div class="footer-inner">
-                <span data-i18n="footer_copy">© 2026 Апат</span>
-                <div class="footer-links">
-                    <a href="#" data-i18n="footer_contact">Байланыс</a>
-                    <a href="#">Instagram</a>
                 </div>
             </div>
-        </footer> -->
+
+            <!-- ── Список статей ─────────────────────────── -->
+            <section class="articles-section">
+                <div class="articles-inner">
+
+                    <a href="article.html" class="article-entry" data-category="repression">
+                        <div class="entry-meta">
+                            <span class="article-tag tag-repression" data-i18n="tag_repression">Репрессия</span>
+                            <span class="entry-date" data-date="2026-06-02">2026</span>
+                        </div>
+                        <h2 class="entry-title">Алаш Орда зиялылары: ұмытылған буынның трагедиясы</h2>
+                        <p class="entry-author">Айдар Сейітов</p>
+                        <p class="entry-excerpt">
+                            1920–30 жылдары Кеңес өкіметі Қазақстанда жүздеген зиялыны жоюға кірісті.
+                            Алаш Орда партиясының мүшелері — ойшылдар, ақындар, заңгерлер — жалған
+                            «ұлтшылдық» айыбымен атылды. Осы мақалада сол тұлғалардың соңғы куәліктері жарыққа шығады.
+                        </p>
+                        <span class="entry-read" data-i18n="read_more">Оқу →</span>
+                    </a>
+
+                    <a href="#" class="article-entry" data-category="polygon">
+                        <div class="entry-meta">
+                            <span class="article-tag tag-polygon" data-i18n="tag_polygon">Полигон</span>
+                            <span class="entry-date" data-date="2026-05-29">2026</span>
+                        </div>
+                        <h2 class="entry-title">Семей полигоны: 40 жылдық сынақтардың адам бетіндегі ізі</h2>
+                        <p class="entry-author">Дәрия Қасымова</p>
+                        <p class="entry-excerpt">
+                            1949–1989 жылдар аралығында Семей маңында 456 ядролық жарылыс жасалды.
+                            Бұл мақала медициналық деректер, жергілікті тұрғындардың куәліктері және
+                            жабық архив материалдары арқылы сол зардаптарды бүгін де сезінетін ұрпақтың тарихын баяндайды.
+                        </p>
+                        <span class="entry-read" data-i18n="read_more">Оқу →</span>
+                    </a>
+
+                    <a href="#" class="article-entry" data-category="famine">
+                        <div class="entry-meta">
+                            <span class="article-tag tag-famine" data-i18n="tag_famine">Голодомор</span>
+                            <span class="entry-date" data-date="2026-05-12">2026</span>
+                        </div>
+                        <h2 class="entry-title">1931–1933: Ашаршылықтан аман қалғандардың куәліктері</h2>
+                        <p class="entry-author">Нұргүл Бекова</p>
+                        <p class="entry-excerpt">
+                            Кеңестік ұжымдастыру саясаты қазақ халқының 38%-ын жойды.
+                            Аман қалғандардың ауызша тарихтары — апасының өліп бара жатқан
+                            үйден нанды жасырғаны, туысын жерлеуге шамасы келмегені — осы мақалада алғаш рет жарияланады.
+                        </p>
+                        <span class="entry-read" data-i18n="read_more">Оқу →</span>
+                    </a>
+
+                    <a href="#" class="article-entry" data-category="repression">
+                        <div class="entry-meta">
+                            <span class="article-tag tag-repression" data-i18n="tag_repression">Репрессия</span>
+                            <span class="entry-date" data-date="2026-04-08">2026</span>
+                        </div>
+                        <h2 class="entry-title">НКВД мұрағаттары: жабық деректердегі есімдер</h2>
+                        <p class="entry-author">Серік Әбенов</p>
+                        <p class="entry-excerpt">
+                            1991 жылы ашылған КГБ мұрағатының бір бөлігінде 14 000-нан астам
+                            қазақстандықтың тергеу материалдары сақтаулы. Бұл зерттеу сол
+                            деректерден табылған есімдер мен олардың тағдырын баяндайды.
+                        </p>
+                        <span class="entry-read" data-i18n="read_more">Оқу →</span>
+                    </a>
+
+                    <a href="#" class="article-entry" data-category="polygon">
+                        <div class="entry-meta">
+                            <span class="article-tag tag-polygon" data-i18n="tag_polygon">Полигон</span>
+                            <span class="entry-date" data-date="2026-01-20">2026</span>
+                        </div>
+                        <h2 class="entry-title">Атом сынақтарының медициналық зардаптары: ұрпаққа жеткен ауру</h2>
+                        <p class="entry-author">Жанар Мұсабекова</p>
+                        <p class="entry-excerpt">
+                            Семей өңірінде онкологиялық аурулардың деңгейі ұлттық орташадан
+                            екі есе жоғары. Эпидемиологиялық деректер мен дәрігерлердің
+                            куәліктеріне негізделген бұл зерттеу ядролық мұраның бүгінгі бетін ашады.
+                        </p>
+                        <span class="entry-read" data-i18n="read_more">Оқу →</span>
+                    </a>
+
+                    <a href="#" class="article-entry" data-category="famine">
+                        <div class="entry-meta">
+                            <span class="article-tag tag-famine" data-i18n="tag_famine">Голодомор</span>
+                            <span class="entry-date" data-date="2025-09-15">2025</span>
+                        </div>
+                        <h2 class="entry-title">Көшпенді мәдениеттің соңы: ашаршылық және мал шаруашылығы</h2>
+                        <p class="entry-author">Бауыржан Тілеуов</p>
+                        <p class="entry-excerpt">
+                            Ұжымдастыру кезінде 80 миллионнан астам мал жойылды. Бұл тек
+                            экономикалық апат емес — мыңдаған жылдық көшпенді өркениеттің
+                            мәдени жойылуы болды. Зерттеу сол өтпелі кезеңдегі адам тағдырларына назар аударады.
+                        </p>
+                        <span class="entry-read" data-i18n="read_more">Оқу →</span>
+                    </a>
+
+                    <a href="#" class="article-entry" data-category="repression">
+                        <div class="entry-meta">
+                            <span class="article-tag tag-repression" data-i18n="tag_repression">Репрессия</span>
+                            <span class="entry-date" data-date="2025-02-01">2025</span>
+                        </div>
+                        <h2 class="entry-title">Мағжан Жұмабаев: соңғы хаттар мен жоғалған өлеңдер</h2>
+                        <p class="entry-author">Айдар Сейітов</p>
+                        <p class="entry-excerpt">
+                            1938 жылы атылардан бірнеше сағат бұрын Мағжан Жұмабаев тергеушіге
+                            соңғы мәлімдемесін жазды. Бұл мақала сол құжатты және ақынның
+                            тұтқындалу кезінде жасырылған, соңында жоғалған өлеңдерін зерттейді.
+                        </p>
+                        <span class="entry-read" data-i18n="read_more">Оқу →</span>
+                    </a>
+
+                    <a href="#" class="article-entry" data-category="polygon">
+                        <div class="entry-meta">
+                            <span class="article-tag tag-polygon" data-i18n="tag_polygon">Полигон</span>
+                            <span class="entry-date" data-date="2024-03-10">2024</span>
+                        </div>
+                        <h2 class="entry-title">«Антинуклеар» қозғалысы: Невада–Семей бастамасы</h2>
+                        <p class="entry-author">Дәрия Қасымова</p>
+                        <p class="entry-excerpt">
+                            1989 жылы ақын Олжас Сүлейменов ядролық сынақтарға қарсы қозғалыс
+                            бастады. Бірнеше айда 1 миллионнан астам адам қол қойды. Бұл
+                            тарихи қозғалыс Кеңес Одағын ядролық полигонды жабуға мәжбүр етті.
+                        </p>
+                        <span class="entry-read" data-i18n="read_more">Оқу →</span>
+                    </a>
+
+                    <a href="#" class="article-entry" data-category="famine">
+                        <div class="entry-meta">
+                            <span class="article-tag tag-famine" data-i18n="tag_famine">Голодомор</span>
+                            <span class="entry-date" data-date="2022-11-30">2022</span>
+                        </div>
+                        <h2 class="entry-title">Жерленбеген жерде: ашаршылық кезіндегі жерлеу дәстүрі</h2>
+                        <p class="entry-author">Нұргүл Бекова</p>
+                        <p class="entry-excerpt">
+                            1932–1933 жылдары қайтыс болғандардың көпшілігі дәстүрлі жерлеусіз
+                            қалды. Антропологиялық зерттеулер мен аман қалғандардың куәліктері
+                            арқылы бұл мақала ол дәуірдің ең ауыр жақтарының бірін зерделейді.
+                        </p>
+                        <span class="entry-read" data-i18n="read_more">Оқу →</span>
+                    </a>
+
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <span>© 2026 Qazaq Mura</span>
+                <div class="footer-links">
+                    <a href="#" data-i18n="footer_contact">Байланыс</a>
+                </div>
+            </div>
+        </footer>
 
     </div>
 
     <script src="../JS/i18n.js"></script>
+    <script src="../JS/session.js"></script>
+    <script src="../JS/main.js"></script>
 </body>
 </html>
