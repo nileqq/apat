@@ -52,23 +52,23 @@ main {
     position: absolute;          /* скроллится вместе со страницей */
     top: 0;
     bottom: 0;
-    width: 80px;
+    width: 112px;
     background: url('../assets/ornament.svg') repeat-y center top;
-    background-size: 80px 200px;  /* высота одного тайла = шаг анимации */
-    opacity: 0.28;
+    background-size: 112px 200px;  /* высота одного тайла = шаг анимации */
+    opacity: 0.34;
     pointer-events: none;
     z-index: 0;
-    animation: ornament-flow 8s linear infinite;
+    animation: ornament-flow 18s linear infinite;
 }
 
 .ornament-left  { left: 0; }
 .ornament-right { right: 0; }
 
-/* Бесконечный поток вверх: сдвигаем фон ровно на 1 тайл (200px),
+/* Бесконечный поток вверх: сдвигаем фон ровно на 1 тайл (288px),
    после чего узор совпадает сам с собой — стыка не видно */
 @keyframes ornament-flow {
     from { background-position-y: 0; }
-    to   { background-position-y: -200px; }
+    to   { background-position-y: -288px; }
 }
 
 /* Уважаем настройку «уменьшить анимацию» в системе */

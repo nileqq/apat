@@ -21,9 +21,22 @@ header {
 /* Логотип */
 .logo {
     display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+}
+
+.logo-mark {
+    flex-shrink: 0;
+    display: block;
+    height: 40px;
+    width: auto;        /* ворон вертикальный — не зажимаем в квадрат */
+}
+
+.logo-text {
+    display: flex;
     flex-direction: column;
     gap: 1px;
-    text-decoration: none;
 }
 
 .logo-title {
