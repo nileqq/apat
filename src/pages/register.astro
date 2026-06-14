@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Тіркелу" extraCss="/styles/auth.css">
+  <main class="auth-main">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h1 class="auth-title" data-i18n="register_title">Тіркелу</h1>
+        <p class="auth-sub" data-i18n="register_sub">Жаңа аккаунт жасаңыз</p>
+      </div>
+
+      <form class="auth-form" id="registerForm" novalidate>
+        <div class="field-group">
+          <label class="field-label" for="name" data-i18n="field_name">Аты-жөні</label>
+          <input class="field-input" type="text" id="name" name="name"
+            autocomplete="name" placeholder="Айдар Сейітов" data-i18n-ph="field_name_ph">
+          <span class="field-error" id="nameError"></span>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="email" data-i18n="field_email">Электрондық пошта</label>
+          <input class="field-input" type="email" id="email" name="email"
+            autocomplete="email" placeholder="example@mail.com" data-i18n-ph="field_email_ph">
+          <span class="field-error" id="emailError"></span>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="password" data-i18n="field_password">Құпия сөз</label>
+          <div class="password-wrapper">
+            <input class="field-input" type="password" id="password" name="password"
+              autocomplete="new-password" placeholder="••••••••" data-i18n-ph="field_password_ph">
+            <button type="button" class="toggle-pass" id="togglePass" aria-label="Көрсету">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+          <span class="field-hint" data-i18n="password_hint">Кемінде 8 таңба</span>
+          <span class="field-error" id="passwordError"></span>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="confirm" data-i18n="field_confirm">Растау</label>
+          <input class="field-input" type="password" id="confirm" name="confirm"
+            autocomplete="new-password" placeholder="••••••••" data-i18n-ph="field_confirm_ph">
+          <span class="field-error" id="confirmError"></span>
+        </div>
+
+        <div id="formError" class="form-error" hidden></div>
+        <button type="submit" class="auth-submit" data-i18n="register_submit">Тіркелу →</button>
+      </form>
+
+      <div class="auth-switch">
+        <span data-i18n="register_have_account">Аккаунтыңыз бар ма?</span>
+        <a href="/login" data-i18n="register_login_link">Кіру</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="/scripts/auth.js" slot="scripts"></script>
+</Layout>

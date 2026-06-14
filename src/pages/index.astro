@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles');
+const articles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const categoryTag: Record<string, string> = {
+  repression: 'tag-repression',
+  polygon:    'tag-polygon',
+  famine:     'tag-famine',
+};
+
+const categoryLabel: Record<string, string> = {
+  repression: 'Репрессия',
+  polygon:    'Полигон',
+  famine:     'Голодомор',
+};
+---
+<Layout title="Мақалалар" extraCss="/styles/main.css">
+
+  <main>
+    <div class="masthead">
+      <div class="masthead-inner">
+        <h1 class="masthead-title" data-i18n="nav_articles">Мақалалар</h1>
+        <p class="masthead-sub" data-i18n="hero_sub">
+          Репрессия, полигон және голодомор құрбандарының тарихи куәліктері
+        </p>
+        <div class="masthead-controls">
+          <div class="filter-pills">
+            <button class="filter-pill active" data-filter="all"        data-i18n="filter_all">Барлығы</button>
+            <button class="filter-pill"        data-filter="repression" data-i18n="tag_repression">Репрессия</button>
+            <button class="filter-pill"        data-filter="polygon"    data-i18n="tag_polygon">Полигон</button>
+            <button class="filter-pill"        data-filter="famine"     data-i18n="tag_famine">Голодомор</button>
+          </div>
+          <div class="search-inline">
+            <input type="text" id="searchInput" placeholder="Іздеу..." data-i18n-ph="search_placeholder">
+            <button class="search-btn" aria-label="Іздеу">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="articles-section">
+      <div class="articles-inner">
+        {articles.map(article => (
+          <a
+            href={`/articles/${article.slug}`}
+            class="article-entry"
+            data-category={article.data.category}
+          >
+            <div class="entry-meta">
+              <span class={`article-tag ${categoryTag[article.data.category]}`}>
+                {categoryLabel[article.data.category]}
+              </span>
+              <span class="entry-date" data-date={article.data.date.toISOString().slice(0, 10)}>
+                {article.data.date.getFullYear()}
+              </span>
+            </div>
+            <h2 class="entry-title">
+              {article.data.title}{article.data.titleItalic ? ': ' : ''}
+              {article.data.titleItalic && <em>{article.data.titleItalic}</em>}
+            </h2>
+            <p class="entry-author">{article.data.author}</p>
+            <p class="entry-excerpt">{article.data.excerpt}</p>
+            <span class="entry-read" data-i18n="read_more">Оқу →</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 Qazaq Mura</span>
+      <div class="footer-links">
+        <a href="/about" data-i18n="footer_contact">Байланыс</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/scripts/main.js" slot="scripts"></script>
+</Layout>

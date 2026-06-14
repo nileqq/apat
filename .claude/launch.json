@@ -3,9 +3,10 @@
   "configurations": [
     {
       "name": "qazaq-mura",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "src/frontend", "-p", "3333", "--no-clipboard"],
-      "port": 3333
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 4321,
+      "autoPort": false
     }
   ]
 }

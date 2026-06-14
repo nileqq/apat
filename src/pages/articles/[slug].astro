@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map(article => ({
+    params: { slug: article.slug },
+    props:  { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content, headings } = await article.render();
+
+const categoryTag: Record<string, string> = {
+  repression: 'tag-repression',
+  polygon:    'tag-polygon',
+  famine:     'tag-famine',
+};
+
+const categoryLabel: Record<string, string> = {
+  repression: 'Репрессия',
+  polygon:    'Полигон',
+  famine:     'Голодомор',
+};
+
+const dateStr = article.data.date.toISOString().slice(0, 10);
+
+const tocHeadings = headings.filter(h => h.depth === 2);
+---
+<Layout title={article.data.title} extraCss="/styles/article.css">
+
+  <div class="reading-progress" id="readingProgress"></div>
+
+  <main>
+    <!-- Шапка статьи -->
+    <div class="article-header">
+      <div class="article-header-inner">
+        <div class="article-meta-row">
+          <span class={`article-tag ${categoryTag[article.data.category]}`}>
+            {categoryLabel[article.data.category]}
+          </span>
+          <span class="article-vol">{article.data.volume ?? '2026'}</span>
+        </div>
+
+        <h1 class="article-title">
+          {article.data.title}
+          {article.data.titleItalic && (
+            <><br/><em>{article.data.titleItalic}</em></>
+          )}
+        </h1>
+
+        <p class="article-byline">
+          <span data-i18n="article_by">Автор:</span>
+          <span class="article-author">{article.data.author}</span>
+        </p>
+
+        <div class="article-rule">
+          <span class="rule-line"></span>
+          <span class="rule-ornament">✦</span>
+          <span class="rule-line"></span>
+        </div>
+
+        <p class="article-abstract">{article.data.excerpt}</p>
+      </div>
+    </div>
+
+    <!-- Мазмұн + Мәтін -->
+    <div class="article-layout">
+
+      <aside class="article-toc">
+        <div class="toc-inner">
+          <p class="toc-label" data-i18n="toc_label">Мазмұны</p>
+          <nav>
+            <ol class="toc-list">
+              {tocHeadings.map((h, i) => (
+                <li>
+                  <a href={`#${h.slug}`} class={`toc-link${i === 0 ? ' toc-active' : ''}`}>
+                    {h.text}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+
+          <div class="toc-cite">
+            <p class="cite-label" data-i18n="cite_label">Дәйексөз</p>
+            <p class="cite-text">
+              {article.data.author.split(' ')[0][0]}. «{article.data.title}».{' '}
+              <em>Qazaq Mura</em>, {article.data.volume ?? '2026'}.
+            </p>
+          </div>
+        </div>
+      </aside>
+
+      <article class="article-body">
+        <Content />
+      </article>
+    </div>
+  </main>
+
+  <footer class="article-footer">
+    <div class="article-footer-inner">
+      <a href="/" class="back-link">
+        <span>←</span>
+        <span data-i18n="back_to_articles">Барлық мақалалар</span>
+      </a>
+      <span class="footer-copy">© 2026 Qazaq Mura</span>
+    </div>
+  </footer>
+
+  <script src="/scripts/article.js" slot="scripts"></script>
+</Layout>
