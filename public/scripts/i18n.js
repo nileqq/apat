@@ -163,44 +163,53 @@ function formatRelative(iso, lang) {
     return years + sep + t.y;                           // годы
 }
 
-let currentLang = 'kk';
+const LANGS = ['kk', 'ru', 'en'];
+
+function getLangFromUrl() {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    return LANGS.includes(parts[0]) ? parts[0] : 'kk';
+}
+
+function redirectToLang(newLang) {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    if (parts.length > 0 && LANGS.includes(parts[0])) {
+        parts[0] = newLang;
+    } else {
+        parts.unshift(newLang);
+    }
+    window.location.href = '/' + parts.join('/');
+}
+
+let currentLang = getLangFromUrl();
 
 function applyLang(lang) {
     currentLang = lang;
     const t = translations[lang];
 
-    // Обновляем все элементы с data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
         if (t[key] !== undefined) el.textContent = t[key];
     });
 
-    // Обновляем placeholder у инпутов/textarea
     document.querySelectorAll('[data-i18n-ph]').forEach(el => {
         const key = el.dataset.i18nPh;
         if (t[key] !== undefined) el.placeholder = t[key];
     });
 
-    // Пересчитываем относительные даты на новом языке
     document.querySelectorAll('[data-date]').forEach(el => {
         el.textContent = formatRelative(el.dataset.date, lang);
     });
 
-    // Подсвечиваем активную кнопку
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-    });
-
-    // Меняем lang у <html> для скринридеров
     document.documentElement.lang = lang;
 }
 
-// Вешаем обработчики на кнопки после загрузки DOM
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+        btn.addEventListener('click', () => {
+            const newLang = btn.dataset.lang;
+            if (newLang !== currentLang) redirectToLang(newLang);
+        });
     });
 
-    // Запускаем с казахским по умолчанию
-    applyLang('kk');
+    applyLang(currentLang);
 });

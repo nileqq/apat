@@ -2,11 +2,12 @@
 interface Props {
   title: string;
   extraCss?: string;
+  lang?: string;
 }
-const { title, extraCss } = Astro.props;
+const { title, extraCss, lang = 'kk' } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="kk">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@ const { title, extraCss } = Astro.props;
   <div id="root">
     <header>
       <div class="header-inner">
-        <a href="/" class="logo">
+        <a href={`/${lang}/`} class="logo">
           <img class="logo-mark" src="/assets/crow-white-transparent.png" alt="Qazaq Mura" height="44">
           <div class="logo-text">
             <span class="logo-title">Qazaq Mura</span>
@@ -30,13 +31,13 @@ const { title, extraCss } = Astro.props;
           </div>
         </a>
         <nav>
-          <a href="/" data-i18n="nav_articles">Мақалалар</a>
-          <a href="/about" data-i18n="nav_about">Жоба туралы</a>
+          <a href={`/${lang}/`} data-i18n="nav_articles">Мақалалар</a>
+          <a href={`/${lang}/about`} data-i18n="nav_about">Жоба туралы</a>
         </nav>
         <div class="lang-switcher">
-          <button class="lang-btn active" data-lang="kk">ҚАЗ</button>
-          <button class="lang-btn"        data-lang="ru">РУС</button>
-          <button class="lang-btn"        data-lang="en">ENG</button>
+          <button class={`lang-btn${lang === 'kk' ? ' active' : ''}`} data-lang="kk">ҚАЗ</button>
+          <button class={`lang-btn${lang === 'ru' ? ' active' : ''}`} data-lang="ru">РУС</button>
+          <button class={`lang-btn${lang === 'en' ? ' active' : ''}`} data-lang="en">ENG</button>
         </div>
       </div>
     </header>

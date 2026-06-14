@@ -7,7 +7,7 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 ---
-<Layout title="Тіркелу" extraCss="/styles/auth.css">
+<Layout title="Тіркелу" extraCss="/styles/auth.css" lang={lang}>
   <main class="auth-main">
     <div class="auth-card">
       <div class="auth-header">
