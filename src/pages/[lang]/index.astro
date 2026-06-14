@@ -13,7 +13,7 @@ const { lang } = Astro.params;
 
 const allArticles = await getCollection('articles');
 const articles = allArticles
-  .filter(a => a.collection === 'articles' && a.slug.startsWith(`${lang}/`))
+  .filter(a => a.collection === 'articles' && a.slug.startsWith(`${lang}/`) && !a.data.draft)
   .map(a => ({
     ...a,
     slug: a.slug.replace(`${lang}/`, ''),
