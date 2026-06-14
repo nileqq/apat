@@ -1,5 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return ['kk', 'ru', 'en'].map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
 ---
 <Layout title="Тіркелу" extraCss="/styles/auth.css">
   <main class="auth-main">
@@ -52,10 +58,17 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="auth-switch">
         <span data-i18n="register_have_account">Аккаунтыңыз бар ма?</span>
-        <a href="/login" data-i18n="register_login_link">Кіру</a>
+        <a href={`/${lang}/login`} data-i18n="register_login_link">Кіру</a>
       </div>
     </div>
   </main>
 
+  <script is:inline define:vars={{ lang }}>
+    document.querySelectorAll('a').forEach(a => {
+      if (a.href.includes('/login') && !a.href.includes('://')) {
+        a.href = `/${lang}/login`;
+      }
+    });
+  </script>
   <script src="/scripts/auth.js" slot="scripts"></script>
 </Layout>

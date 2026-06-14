@@ -45,8 +45,8 @@ const { title, extraCss } = Astro.props;
 
   </div>
 
-  <script src="/scripts/i18n.js"></script>
-  <script src="/scripts/session.js"></script>
+  <script src="/scripts/i18n.js" is:inline></script>
+  <script src="/scripts/session.js" is:inline></script>
   <slot name="scripts" />
 </body>
 </html>
