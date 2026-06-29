@@ -12,23 +12,24 @@ if (progressBar) {
 
 // TOC: подсветка активного раздела при скролле
 const tocLinks = document.querySelectorAll('.toc-link');
-const sections = document.querySelectorAll('.article-body section[id]');
+const headings = document.querySelectorAll('.article-body h2[id]');
 
-if (sections.length && tocLinks.length) {
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    tocLinks.forEach(l => l.classList.remove('toc-active'));
-                    const active = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
-                    if (active) active.classList.add('toc-active');
-                }
-            });
-        },
-        { rootMargin: '-20% 0px -70% 0px' }
-    );
+if (headings.length && tocLinks.length) {
+    function updateToc() {
+        const scrollY = window.scrollY + 120;
+        let current = headings[0];
 
-    sections.forEach(s => observer.observe(s));
+        headings.forEach(h => {
+            if (h.offsetTop <= scrollY) current = h;
+        });
+
+        tocLinks.forEach(l => l.classList.remove('toc-active'));
+        const active = document.querySelector(`.toc-link[href="#${current.id}"]`);
+        if (active) active.classList.add('toc-active');
+    }
+
+    window.addEventListener('scroll', updateToc, { passive: true });
+    updateToc();
 }
 
 // Плавный скролл по якорям TOC
