@@ -43,7 +43,7 @@ body::before {
     inset: 0;
     background-image: url('/assets/noise.svg');
     background-size: 300px 300px;
-    opacity: 0.045;
+    opacity: 0.4;
     pointer-events: none;
     z-index: 9999;
 }
