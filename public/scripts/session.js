@@ -49,12 +49,6 @@
 
             slot.querySelector('#logoutBtn').addEventListener('click', logout);
 
-        } else {
-            // Показываем кнопку входа
-            slot.innerHTML = `
-                <a href="/login" class="login-btn" data-i18n="nav_login">Кіру</a>
-            `;
-            langSwitcher.before(slot);
         }
     }
 
