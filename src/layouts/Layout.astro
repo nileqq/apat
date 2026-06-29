@@ -44,6 +44,41 @@ const { title, extraCss, lang = 'kk' } = Astro.props;
 
     <slot />
 
+    <footer class="journal-footer">
+      <div class="journal-footer-inner">
+        <div class="jf-top">
+          <img src="/assets/crow-white-transparent.png" alt="" class="jf-logo-img">
+          <h2 class="jf-title">QAZAQ MURA</h2>
+          <p class="jf-tagline" data-i18n="hero_sub">
+            Репрессия, полигон және голодомор құрбандарының тарихи куәліктері
+          </p>
+        </div>
+
+        <div class="jf-divider"></div>
+
+        <div class="jf-nav">
+          <a href={`/${lang}/`} data-i18n="nav_articles">Мақалалар</a>
+          <span class="jf-dot">·</span>
+          <a href={`/${lang}/about`} data-i18n="nav_about">Жоба туралы</a>
+        </div>
+
+        <div class="jf-social">
+          <a href="https://www.instagram.com/qazaq.mura.journal" target="_blank" rel="noopener" class="jf-social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+            </svg>
+            Instagram
+          </a>
+        </div>
+
+        <div class="jf-divider"></div>
+
+        <p class="jf-copy">© 2026 Qazaq Mura · Барлық құқықтар қорғалған</p>
+      </div>
+    </footer>
+
   </div>
 
   <script src="/scripts/i18n.js" is:inline></script>
