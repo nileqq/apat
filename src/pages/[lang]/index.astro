@@ -32,32 +32,53 @@ const categoryLabel: Record<string, string> = {
   famine:     'Голодомор',
 };
 ---
-<Layout title="Мақалалар" extraCss="/styles/main.css" lang={lang}>
+<Layout title="Qazaq Mura" lang={lang}>
 
   <main>
-    <div class="masthead">
-      <div class="masthead-inner">
-        <h1 class="masthead-title" data-i18n="nav_articles">Мақалалар</h1>
-        <p class="masthead-sub" data-i18n="hero_sub">
-          Репрессия, полигон және голодомор құрбандарының тарихи куәліктері
+
+    <!-- ─── Герой ─────────────────────────────── -->
+    <section class="hero">
+      <div class="hero-inner">
+
+        <h1 class="hero-title">QAZAQ MURA</h1>
+
+        <div class="hero-divider">
+          <span class="divider-line"></span>
+          <span class="divider-ornament">✦</span>
+          <span class="divider-line"></span>
+        </div>
+
+        <p class="hero-subtitle">
+          Қазақ халқының қайғысы мен қасіретіне арналған журнал
         </p>
-        <div class="masthead-controls">
+
+        <div class="hero-mission">
+          <p>Ашаршылық (1930–1933), саяси қуғын-сүргін және Семей ядролық полигонынан зардап шеккендердің естеліктері арқылы қазақ халқының бастан кешкен тарихы мен қасіретін баяндаймыз.</p>
+          <p>Біз әділетсіздік пен адам тағдырына жасалған қиянат туралы үнсіз қалмауға ұмтыламыз.</p>
+          <p>Құрбандардың дауысы мен естеліктерін келешекке жеткізу арқылы әділдікке, тарихи жадыға және адам қадір-қасиетіне деген құрметті нығайтуды мақсат етеміз.</p>
+        </div>
+
+        <div class="hero-search">
+          <input type="text" id="searchInput" placeholder="Іздеу..." data-i18n-ph="search_placeholder">
+          <button class="search-btn" aria-label="Іздеу">→</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── Статьи ─────────────────────────────── -->
+    <section class="articles-section">
+      <div class="articles-inner">
+
+        <div class="articles-header">
           <div class="filter-pills">
             <button class="filter-pill active" data-filter="all"        data-i18n="filter_all">Барлығы</button>
             <button class="filter-pill"        data-filter="repression" data-i18n="tag_repression">Репрессия</button>
             <button class="filter-pill"        data-filter="polygon"    data-i18n="tag_polygon">Полигон</button>
             <button class="filter-pill"        data-filter="famine"     data-i18n="tag_famine">Голодомор</button>
           </div>
-          <div class="search-inline">
-            <input type="text" id="searchInput" placeholder="Іздеу..." data-i18n-ph="search_placeholder">
-            <button class="search-btn" aria-label="Іздеу">→</button>
-          </div>
         </div>
-      </div>
-    </div>
 
-    <section class="articles-section">
-      <div class="articles-inner">
         {articles.length > 0 ? (
           articles.map(article => (
             <a
@@ -83,19 +104,19 @@ const categoryLabel: Record<string, string> = {
             </a>
           ))
         ) : (
-          <p style="text-align: center; color: #8f857a; padding: 2rem;">
-            Осы тілде мақалалар әлі жоқ
-          </p>
+          <p class="articles-empty">Осы тілде мақалалар әлі жоқ</p>
         )}
+
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
       <span>© 2026 Qazaq Mura</span>
       <div class="footer-links">
-        <a href="/about" data-i18n="footer_contact">Байланыс</a>
+        <a href={`/${lang}/about`} data-i18n="footer_contact">Байланыс</a>
       </div>
     </div>
   </footer>
