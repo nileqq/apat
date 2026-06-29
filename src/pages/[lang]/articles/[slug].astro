@@ -40,43 +40,70 @@ const categoryLabel: Record<string, string> = {
 };
 
 const tocHeadings = headings.filter(h => h.depth === 2);
+
+const localeMap: Record<string, string> = { kk: 'kk-KZ', ru: 'ru-RU', en: 'en-US' };
+const dateFormatted = article.data.date
+  .toLocaleDateString(localeMap[lang] ?? 'ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
+  .toUpperCase();
 ---
 <Layout title={article.data.title} extraCss="/styles/article.css" lang={lang}>
 
   <div class="reading-progress" id="readingProgress"></div>
 
   <main>
-    <!-- Шапка статьи -->
-    <div class="article-header">
-      <div class="article-header-inner">
-        <div class="article-meta-row">
-          <span class={`article-tag ${categoryTag[article.data.category]}`}>
-            {categoryLabel[article.data.category]}
-          </span>
-          <span class="article-vol">{article.data.volume ?? '2026'}</span>
+    {article.data.cover ? (
+      <>
+        <!-- Cover-фото шапка -->
+        <div class="article-cover">
+          <img src={article.data.cover} alt={article.data.title} class="article-cover-img">
+          <div class="article-cover-overlay"></div>
+          <div class="article-cover-content">
+            {article.data.kicker && <p class="cover-kicker">{article.data.kicker}</p>}
+            <div class="cover-tags">
+              <span class="cover-tag">{categoryLabel[article.data.category]}</span>
+            </div>
+            <h1 class="article-title cover-title">
+              {article.data.title}
+              {article.data.titleItalic && <><br/><em>{article.data.titleItalic}</em></>}
+            </h1>
+            <p class="cover-byline">
+              <span data-i18n="article_by">Автор:</span>
+              <em>{article.data.author}</em>
+            </p>
+          </div>
         </div>
-
-        <h1 class="article-title">
-          {article.data.title}
-          {article.data.titleItalic && (
-            <><br/><em>{article.data.titleItalic}</em></>
-          )}
-        </h1>
-
-        <p class="article-byline">
-          <span data-i18n="article_by">Автор:</span>
-          <span class="article-author">{article.data.author}</span>
-        </p>
-
-        <div class="article-rule">
-          <span class="rule-line"></span>
-          <span class="rule-ornament">✦</span>
-          <span class="rule-line"></span>
+        <div class="cover-meta-bar">
+          <span class="cover-date">{dateFormatted}</span>
+          <span class="cover-cat-label">{categoryLabel[article.data.category]}</span>
         </div>
-
-        <p class="article-abstract">{article.data.excerpt}</p>
+      </>
+    ) : (
+      <!-- Текстовая шапка (без фото) -->
+      <div class="article-header">
+        <div class="article-header-inner">
+          <div class="article-meta-row">
+            <span class={`article-tag ${categoryTag[article.data.category]}`}>
+              {categoryLabel[article.data.category]}
+            </span>
+            <span class="article-vol">{article.data.volume ?? '2026'}</span>
+          </div>
+          <h1 class="article-title">
+            {article.data.title}
+            {article.data.titleItalic && <><br/><em>{article.data.titleItalic}</em></>}
+          </h1>
+          <p class="article-byline">
+            <span data-i18n="article_by">Автор:</span>
+            <span class="article-author">{article.data.author}</span>
+          </p>
+          <div class="article-rule">
+            <span class="rule-line"></span>
+            <span class="rule-ornament">✦</span>
+            <span class="rule-line"></span>
+          </div>
+          <p class="article-abstract">{article.data.excerpt}</p>
+        </div>
       </div>
-    </div>
+    )}
 
     <!-- Мазмұн + Мәтін -->
     <div class="article-layout">
