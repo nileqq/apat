@@ -41,9 +41,8 @@ body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url('/assets/noise.svg');
-    background-size: 300px 300px;
-    opacity: 0.18;
+    background-image: url('https://www.transparenttextures.com/patterns/handmade-paper.png');
+    opacity: 0.08;
     mix-blend-mode: screen;
     pointer-events: none;
     z-index: 9999;
