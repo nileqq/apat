@@ -33,11 +33,12 @@ const categoryTag: Record<string, string> = {
   famine:     'tag-famine',
 };
 
-const categoryLabel: Record<string, string> = {
-  repression: 'Репрессия',
-  polygon:    'Полигон',
-  famine:     'Голодомор',
+const categoryLabels: Record<string, Record<string, string>> = {
+  kk: { repression: 'Репрессия',  polygon: 'Полигон', famine: 'Голодомор' },
+  ru: { repression: 'Репрессии',  polygon: 'Полигон', famine: 'Голодомор' },
+  en: { repression: 'Repression', polygon: 'Polygon', famine: 'Famine'    },
 };
+const categoryLabel = categoryLabels[lang] ?? categoryLabels.kk;
 
 const tocHeadings = headings.filter(h => h.depth === 2);
 
