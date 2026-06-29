@@ -292,6 +292,23 @@ main { flex: 1; }
 
 .footer-links a:hover { color: var(--color-accent); }
 
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    color: var(--color-muted);
+    transition: color 0.2s;
+}
+
+.footer-social:hover { color: var(--color-accent); }
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
 /* ─── Герой ──────────────────────────────────── */
 .hero {
     padding: 5rem 2rem 4rem;
