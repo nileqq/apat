@@ -46,3 +46,28 @@ tocLinks.forEach(link => {
         }
     });
 });
+
+// Кнопка "наверх": появляется, когда читатель начинает скроллить вверх
+const scrollToTopBtn = document.getElementById('scrollToTop');
+if (scrollToTopBtn) {
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        const scrollingUp = currentScrollY < lastScrollY;
+
+        if (currentScrollY < 400) {
+            scrollToTopBtn.classList.remove('is-visible');
+        } else if (scrollingUp) {
+            scrollToTopBtn.classList.add('is-visible');
+        } else {
+            scrollToTopBtn.classList.remove('is-visible');
+        }
+
+        lastScrollY = currentScrollY;
+    }, { passive: true });
+
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}

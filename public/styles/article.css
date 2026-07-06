@@ -10,6 +10,53 @@
     transition: width 0.1s linear;
 }
 
+/* ─── Кнопка "наверх" ────────────────────────── */
+.scroll-to-top {
+    position: fixed;
+    left: 50%;
+    bottom: 1.75rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    color: var(--color-accent);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s, border-color 0.2s ease, background 0.2s ease;
+    z-index: 90;
+}
+
+.scroll-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+.scroll-to-top:hover {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-bg, #16110f);
+}
+
+.scroll-to-top svg {
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 640px) {
+    .scroll-to-top {
+        bottom: 1rem;
+        width: 42px;
+        height: 42px;
+    }
+}
+
 /* ─── Cover-фото шапка ───────────────────────── */
 .article-cover {
     position: relative;
@@ -621,6 +668,74 @@ figcaption {
     line-height: 1.85;
     color: var(--color-text);
     margin-bottom: 1rem;
+}
+
+.article-body .interview-dialogue {
+    position: relative;
+    margin: 1.5rem 0;
+    padding: 0.75rem 1.25rem 0.75rem 2.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+}
+
+/* Нить, соединяющая реплики диалога */
+.article-body .interview-dialogue::before {
+    content: '';
+    position: absolute;
+    top: 1.75rem;
+    bottom: 1.75rem;
+    left: 1.25rem;
+    width: 1px;
+    background: var(--color-border);
+}
+
+.article-body .interview-dialogue .interview-line {
+    position: relative;
+    background: transparent;
+    border-left: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 1rem 0;
+}
+
+/* Маркер реплики на нити */
+.article-body .interview-dialogue .interview-line::before {
+    content: '';
+    position: absolute;
+    left: -1.25rem;
+    top: 1.55rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-surface);
+    z-index: 1;
+}
+
+.article-body .interview-line {
+    margin: 1rem 0;
+    padding: 1rem 1.25rem;
+    background: var(--color-surface);
+    border-left: 2px solid var(--color-accent);
+    border-radius: 3px;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--color-text);
+    white-space: pre-line;
+}
+
+.article-body .interview-speaker {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    white-space: normal;
 }
 
 .article-body blockquote {

@@ -10,7 +10,7 @@ const articles = defineCollection({
     category: z.enum(['repression', 'polygon', 'famine']),
     excerpt: z.string(),
     volume: z.string().optional(),
-    cover: z.string().optional(),
+    cover: z.union([z.string(), z.literal(false)]).optional(),
     kicker: z.string().optional(),
     draft: z.boolean().optional().default(false),
   }),
