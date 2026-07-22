@@ -71,3 +71,46 @@ if (scrollToTopBtn) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
+
+// Термины с подсказкой: <span class="term" title="..."> в теле статьи
+const terms = document.querySelectorAll('.article-body .term[title]');
+if (terms.length) {
+    const tip = document.createElement('div');
+    tip.className = 'term-tooltip';
+    tip.setAttribute('role', 'tooltip');
+    tip.id = 'termTooltip';
+    document.body.appendChild(tip);
+
+    terms.forEach(el => {
+        const text = el.getAttribute('title');
+        el.removeAttribute('title'); // отключаем нативный тултип браузера
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('aria-describedby', 'termTooltip');
+
+        function showTip() {
+            tip.textContent = text;
+            tip.classList.add('is-visible');
+
+            const rect = el.getBoundingClientRect();
+            const tipRect = tip.getBoundingClientRect();
+
+            let top = rect.top - tipRect.height - 8;
+            if (top < 8) top = rect.bottom + 8; // не влезает сверху — показываем снизу
+
+            let left = rect.left + rect.width / 2 - tipRect.width / 2;
+            left = Math.max(8, Math.min(left, window.innerWidth - tipRect.width - 8));
+
+            tip.style.top = top + 'px';
+            tip.style.left = left + 'px';
+        }
+
+        function hideTip() {
+            tip.classList.remove('is-visible');
+        }
+
+        el.addEventListener('mouseenter', showTip);
+        el.addEventListener('mouseleave', hideTip);
+        el.addEventListener('focus', showTip);
+        el.addEventListener('blur', hideTip);
+    });
+}
