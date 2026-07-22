@@ -703,7 +703,7 @@ figcaption {
 .article-body .interview-dialogue .interview-line::before {
     content: '';
     position: absolute;
-    left: -1.25rem;
+    left: -1.5rem;
     top: 1.55rem;
     width: 9px;
     height: 9px;
@@ -780,12 +780,27 @@ figcaption {
 }
 
 .article-body a {
+    position: relative;
+    display: inline-block;
     color: var(--color-accent);
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: text-decoration-color 0.2s;
+    text-decoration: none;
+    padding-bottom: 1px;
 }
 
-.article-body a:hover {
-    text-decoration-color: var(--color-accent);
+/* Подчёркивающая линия */
+.article-body a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.45;
+    transition: opacity 0.2s ease, height 0.2s ease;
+}
+
+.article-body a:hover::after {
+    opacity: 1;
+    height: 1.5px;
 }
