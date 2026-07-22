@@ -7,18 +7,46 @@
 */
 
 /* ─── Переменные ─────────────────────────────── */
+/* Светлая тема (по умолчанию): бежевый/белый/чёрный */
 :root {
-    --color-bg:       #14110e;
-    --color-surface:  #1e1a16;
-    --color-text:     #e8e2d6;
-    --color-muted:    #8f857a;
-    --color-border:   #322b23;
-    --color-accent:   #c97f6e;
-    --color-primary:  #ede6d8;
+    --color-bg:        #f7f2e8;
+    --color-surface:   #ffffff;
+    --color-text:      #2a2420;
+    --color-muted:     #7a6d58;
+    --color-faint:     #a89a80;
+    --color-border:    #e4dac2;
+    --color-accent:    #a8543f;
+    --color-primary:   #1c1712;
+    --color-on-accent: #faf3e8;
+
+    --color-danger:        #b23b3b;
+    --color-danger-bg:     rgba(178, 59, 59, 0.08);
+    --color-danger-border: rgba(178, 59, 59, 0.25);
+    --color-danger-text:   #8a2e2e;
+    --color-success:       #3f7a4e;
 
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans:  'Inter', system-ui, sans-serif;
     --font-lora:  'Lora', Georgia, serif;
+}
+
+/* Тёмная тема: переключается через data-theme="dark" на <html> */
+:root[data-theme="dark"] {
+    --color-bg:        #201810;
+    --color-surface:   #2c2216;
+    --color-text:      #ece2d2;
+    --color-muted:     #a0917c;
+    --color-faint:     #6f5f4a;
+    --color-border:    #453522;
+    --color-accent:    #c97f6e;
+    --color-primary:   #f1e7d4;
+    --color-on-accent: #23160f;
+
+    --color-danger:        #c96e6e;
+    --color-danger-bg:     rgba(201, 110, 110, 0.12);
+    --color-danger-border: rgba(201, 110, 110, 0.3);
+    --color-danger-text:   #e3a6a6;
+    --color-success:       #6ea87a;
 }
 
 /* ─── Сброс ──────────────────────────────────── */
@@ -27,6 +55,8 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.is-hidden { display: none !important; }
 
 body {
     background-color: var(--color-bg);
@@ -42,10 +72,15 @@ body::before {
     position: fixed;
     inset: 0;
     background-image: url('https://www.transparenttextures.com/patterns/handmade-paper.png');
-    opacity: 0.08;
-    mix-blend-mode: screen;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
     pointer-events: none;
     z-index: 9999;
+}
+
+:root[data-theme="dark"] body::before {
+    opacity: 0.1;
+    mix-blend-mode: screen;
 }
 
 #root {
@@ -123,7 +158,7 @@ main { flex: 1; }
 .filter-pill.active {
     background: var(--color-accent);
     border-color: var(--color-accent);
-    color: #1a0e09;
+    color: var(--color-on-accent);
 }
 
 /* ─── Поиск ──────────────────────────────────── */
@@ -151,7 +186,7 @@ main { flex: 1; }
     width: 180px;
 }
 
-#searchInput::placeholder { color: #6a6258; }
+#searchInput::placeholder { color: var(--color-faint); }
 
 .search-btn {
     background: none;
@@ -226,7 +261,7 @@ main { flex: 1; }
     font-family: var(--font-lora);
     font-size: 0.95rem;
     line-height: 1.75;
-    color: #a89e94;
+    color: var(--color-muted);
     margin-bottom: 1.1rem;
 }
 
@@ -261,9 +296,14 @@ main { flex: 1; }
     border-radius: 2px;
 }
 
-.tag-repression { background: #3a2228; color: #e3a6a6; }
-.tag-polygon    { background: #22293a; color: #a6bce3; }
-.tag-famine     { background: #3a2e22; color: #e3c19c; }
+.tag-repression { background: #f5dede; color: #8a3a3a; }
+.tag-polygon    { background: #dfe3f2; color: #34437e; }
+.tag-famine     { background: #f2e6cf; color: #8a6423; }
+.tag-work       { background: var(--color-border); color: var(--color-muted); }
+
+:root[data-theme="dark"] .tag-repression { background: #3a2228; color: #e3a6a6; }
+:root[data-theme="dark"] .tag-polygon    { background: #22293a; color: #a6bce3; }
+:root[data-theme="dark"] .tag-famine     { background: #3a2e22; color: #e3c19c; }
 
 /* ─── Футер ──────────────────────────────────── */
 .site-footer {
@@ -402,7 +442,7 @@ main { flex: 1; }
     width: 100%;
 }
 
-.hero-search #searchInput::placeholder { color: #6a6258; }
+.hero-search #searchInput::placeholder { color: var(--color-faint); }
 
 .hero-search .search-btn {
     background: none;
@@ -525,7 +565,7 @@ main { flex: 1; }
 
 .jf-copy {
     font-size: 0.72rem;
-    color: #5a5248;
+    color: var(--color-faint);
     letter-spacing: 0.04em;
 }
 

@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return ['kk', 'ru', 'en'].map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+
+const pageTitle: Record<string, string> = {
+  kk: 'Жоба туралы',
+  ru: 'О проекте',
+  en: 'About the Project',
+};
+
+const missionText: Record<string, string[]> = {
+  kk: [
+    'Ашаршылық (1930–1933), саяси қуғын-сүргін және Семей ядролық полигонынан зардап шеккендердің естеліктері арқылы қазақ халқының бастан кешкен тарихы мен қасіретін баяндаймыз.',
+    'Біз әділетсіздік пен адам тағдырына жасалған қиянат туралы үнсіз қалмауға ұмтыламыз.',
+    'Құрбандардың дауысы мен естеліктерін келешекке жеткізу арқылы әділдікке, тарихи жадыға және адам қадір-қасиетіне деген құрметті нығайтуды мақсат етеміз.',
+  ],
+  ru: [
+    'Через воспоминания выживших в Голодоморе (1930–1933), политических репрессиях и ядерных испытаниях на Семипалатинском полигоне мы рассказываем об истории и трагедии казахского народа.',
+    'Мы не можем молчать о несправедливости и о насилии, которому подверглись судьбы людей.',
+    'Сохраняя голоса и воспоминания жертв для будущих поколений, мы стремимся укрепить уважение к справедливости, исторической памяти и человеческому достоинству.',
+  ],
+  en: [
+    'Through the testimonies of survivors of the Famine (1930–1933), political repressions, and the Semipalatinsk nuclear test site, we tell the history and tragedy of the Kazakh people.',
+    'We refuse to remain silent about injustice and the violence done to human lives.',
+    'By preserving the voices and memories of victims for future generations, we seek to strengthen respect for justice, historical memory, and human dignity.',
+  ],
+};
+
+const title = pageTitle[lang] ?? pageTitle.kk;
+const mission = missionText[lang] ?? missionText.kk;
+---
+<Layout title={title} extraCss="/styles/article.css" lang={lang}>
+  <main>
+    <div class="article-header">
+      <div class="article-header-inner">
+        <h1 class="article-title" data-i18n="nav_about">{title}</h1>
+        <div class="article-rule">
+          <span class="rule-line"></span>
+          <span class="rule-ornament">✦</span>
+          <span class="rule-line"></span>
+        </div>
+      </div>
+    </div>
+
+    <section class="articles-section">
+      <div class="articles-inner">
+        <div class="hero-mission">
+          {mission.map(p => <p>{p}</p>)}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

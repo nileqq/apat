@@ -41,7 +41,7 @@
 .scroll-to-top:hover {
     border-color: var(--color-accent);
     background: var(--color-accent);
-    color: var(--color-bg, #16110f);
+    color: var(--color-on-accent);
 }
 
 .scroll-to-top svg {
@@ -81,10 +81,10 @@
     inset: 0;
     background: linear-gradient(
         to bottom,
-        rgba(20, 17, 14, 0.1) 0%,
-        rgba(20, 17, 14, 0.45) 45%,
-        rgba(20, 17, 14, 0.9) 85%,
-        rgba(20, 17, 14, 1) 100%
+        rgba(32, 24, 16, 0.1) 0%,
+        rgba(32, 24, 16, 0.45) 45%,
+        rgba(32, 24, 16, 0.9) 85%,
+        rgba(32, 24, 16, 1) 100%
     );
 }
 
@@ -122,7 +122,7 @@
 }
 
 .cover-title {
-    color: #f0eade !important;
+    color: #f1e7d4 !important;
     font-size: clamp(2rem, 5vw, 3.5rem) !important;
     max-width: 640px;
     margin-bottom: 1.25rem;
@@ -131,7 +131,7 @@
 .cover-byline {
     font-family: var(--font-lora);
     font-size: 1rem;
-    color: rgba(232, 226, 214, 0.7);
+    color: rgba(236, 226, 210, 0.7);
     display: flex;
     gap: 0.4rem;
     align-items: center;
@@ -139,7 +139,7 @@
 
 .cover-byline em {
     font-style: italic;
-    color: rgba(232, 226, 214, 0.9);
+    color: rgba(236, 226, 210, 0.9);
 }
 
 .cover-meta-bar {
@@ -334,7 +334,7 @@
 
 .cite-text {
     font-size: 0.75rem;
-    color: #6a6258;
+    color: var(--color-faint);
     line-height: 1.6;
 }
 
@@ -495,7 +495,7 @@ figcaption {
 
 .quote-archive {
     font-size: 0.72rem;
-    color: #6a6258;
+    color: var(--color-faint);
     font-style: italic;
 }
 
@@ -593,7 +593,7 @@ figcaption {
 
 .footer-copy {
     font-size: 0.78rem;
-    color: #6a6258;
+    color: var(--color-faint);
 }
 
 /* ─── Адаптив ────────────────────────────────── */

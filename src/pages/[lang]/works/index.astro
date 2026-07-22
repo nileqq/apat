@@ -1,0 +1,59 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export function getStaticPaths() {
+  return ['kk', 'ru', 'en'].map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+
+const allWorks = await getCollection('works', ({ data }) => !data.draft);
+const works = allWorks.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const pageTitle: Record<string, string> = {
+  kk: 'Жұмыстар',
+  ru: 'Работы',
+  en: 'Works',
+};
+
+const langLabel: Record<string, string> = { kk: 'ҚАЗ', ru: 'РУС', en: 'ENG' };
+---
+<Layout title={pageTitle[lang] ?? pageTitle.kk} extraCss="/styles/article.css" lang={lang}>
+  <main>
+    <div class="article-header">
+      <div class="article-header-inner">
+        <h1 class="article-title" data-i18n="works_title">{pageTitle[lang] ?? pageTitle.kk}</h1>
+        <div class="article-rule">
+          <span class="rule-line"></span>
+          <span class="rule-ornament">✦</span>
+          <span class="rule-line"></span>
+        </div>
+        <p class="article-abstract" data-i18n="works_intro">
+          Мұнда мектеп оқушылары мен студенттердің репрессия, Семей полигоны және ашаршылық тақырыбындағы эссе мен зерттеу жұмыстары жарияланады. Жұмысыңызды ұсынғыңыз келсе, бізге Instagram арқылы хабарласыңыз.
+        </p>
+      </div>
+    </div>
+
+    <section class="articles-section">
+      <div class="articles-inner">
+        {works.length > 0 ? (
+          works.map(work => (
+            <a href={`/${lang}/works/${work.slug}`} class="article-entry">
+              <div class="entry-meta">
+                <span class="entry-date">
+                  {langLabel[work.data.lang] ?? langLabel.kk} · {work.data.date.getFullYear()}
+                </span>
+              </div>
+              <h2 class="entry-title">{work.data.title}</h2>
+              <p class="entry-author">{work.data.author}</p>
+              <span class="entry-read" data-i18n="read_more">Оқу →</span>
+            </a>
+          ))
+        ) : (
+          <p class="articles-empty" data-i18n="works_empty">Әзірге жарияланған жұмыс жоқ</p>
+        )}
+      </div>
+    </section>
+  </main>
+</Layout>

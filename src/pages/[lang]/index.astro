@@ -97,33 +97,37 @@ const mission = missionText[lang] ?? missionText.kk;
           </div>
         </div>
 
-        {articles.length > 0 ? (
-          articles.map(article => (
-            <a
-              href={`/${lang}/articles/${article.slug}`}
-              class="article-entry"
-              data-category={article.data.category}
-            >
-              <div class="entry-meta">
-                <span class={`article-tag ${categoryTag[article.data.category]}`}>
-                  {categoryLabel[article.data.category]}
-                </span>
-                <span class="entry-date" data-date={article.data.date.toISOString().slice(0, 10)}>
-                  {article.data.date.getFullYear()}
-                </span>
-              </div>
-              <h2 class="entry-title">
-                {article.data.title}{article.data.titleItalic ? ': ' : ''}
-                {article.data.titleItalic && <em>{article.data.titleItalic}</em>}
-              </h2>
-              <p class="entry-author">{article.data.author}</p>
-              <p class="entry-excerpt">{article.data.excerpt}</p>
-              <span class="entry-read" data-i18n="read_more">Оқу →</span>
-            </a>
-          ))
-        ) : (
-          <p class="articles-empty" data-i18n="articles_empty">Осы тілде мақалалар әлі жоқ</p>
-        )}
+        <div id="articleList">
+          {articles.length > 0 ? (
+            articles.map(article => (
+              <a
+                href={`/${lang}/articles/${article.slug}`}
+                class="article-entry"
+                data-category={article.data.category}
+              >
+                <div class="entry-meta">
+                  <span class={`article-tag ${categoryTag[article.data.category]}`}>
+                    {categoryLabel[article.data.category]}
+                  </span>
+                  <span class="entry-date" data-date={article.data.date.toISOString().slice(0, 10)}>
+                    {article.data.date.getFullYear()}
+                  </span>
+                </div>
+                <h2 class="entry-title">
+                  {article.data.title}{article.data.titleItalic ? ': ' : ''}
+                  {article.data.titleItalic && <em>{article.data.titleItalic}</em>}
+                </h2>
+                <p class="entry-author">{article.data.author}</p>
+                <p class="entry-excerpt">{article.data.excerpt}</p>
+                <span class="entry-read" data-i18n="read_more">Оқу →</span>
+              </a>
+            ))
+          ) : (
+            <p class="articles-empty" data-i18n="articles_empty">Осы тілде мақалалар әлі жоқ</p>
+          )}
+        </div>
+
+        <div id="searchResults" class="is-hidden"></div>
 
       </div>
     </section>
@@ -132,4 +136,5 @@ const mission = missionText[lang] ?? missionText.kk;
 
 
   <script src="/scripts/main.js" slot="scripts"></script>
+  <script src="/scripts/search.js" slot="scripts"></script>
 </Layout>

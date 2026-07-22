@@ -1,0 +1,76 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const works = await getCollection('works', ({ data }) => !data.draft);
+  const languages = ['kk', 'ru', 'en'];
+
+  const paths: any[] = [];
+  languages.forEach(lang => {
+    works.forEach(work => {
+      paths.push({
+        params: { lang, slug: work.slug },
+        props: { work },
+      });
+    });
+  });
+
+  return paths;
+}
+
+const { lang } = Astro.params;
+const { work } = Astro.props;
+const { Content } = await work.render();
+
+const localeMap: Record<string, string> = { kk: 'kk-KZ', ru: 'ru-RU', en: 'en-US' };
+const dateFormatted = work.data.date
+  .toLocaleDateString(localeMap[lang] ?? 'ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
+  .toUpperCase();
+---
+<Layout title={work.data.title} extraCss="/styles/article.css" lang={lang}>
+  <main>
+    <div class="article-header">
+      <div class="article-header-inner">
+        <div class="article-meta-row">
+          <span class="article-vol">{dateFormatted}</span>
+        </div>
+        <h1 class="article-title">{work.data.title}</h1>
+        <p class="article-byline">
+          <span data-i18n="article_by">Автор:</span>
+          <span class="article-author">{work.data.author}</span>
+        </p>
+        <div class="article-rule">
+          <span class="rule-line"></span>
+          <span class="rule-ornament">✦</span>
+          <span class="rule-line"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="articles-section">
+      <div class="articles-inner">
+        <article class="article-body">
+          <Content />
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <div class="article-footer">
+    <div class="article-footer-inner">
+      <a href={`/${lang}/works`} class="back-link">
+        <span>←</span>
+        <span data-i18n="back_to_works">Барлық жұмыстар</span>
+      </a>
+    </div>
+  </div>
+
+  <button type="button" class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 19V5M12 5L6 11M12 5L18 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script src="/scripts/article.js" slot="scripts"></script>
+</Layout>

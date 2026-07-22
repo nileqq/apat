@@ -16,6 +16,18 @@ const articles = defineCollection({
   }),
 });
 
+const works = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    author: z.string(),
+    date: z.coerce.date(),
+    lang: z.enum(['kk', 'ru', 'en']).default('kk'),
+    draft: z.boolean().optional().default(false),
+  }),
+});
+
 export const collections = {
   articles: articles,
+  works: works,
 };
