@@ -11,6 +11,12 @@ const themeToggleLabel: Record<string, string> = {
   ru: 'Переключить тему',
   en: 'Toggle theme',
 };
+
+const navMenuLabel: Record<string, string> = {
+  kk: 'Мәзірді ашу',
+  ru: 'Открыть меню',
+  en: 'Open menu',
+};
 ---
 <!DOCTYPE html>
 <html lang={lang}>
@@ -44,11 +50,21 @@ const themeToggleLabel: Record<string, string> = {
             <span class="logo-sub" data-i18n="logo_sub">Естелік архиві</span>
           </div>
         </a>
-        <nav>
-          <a href={`/${lang}/`} data-i18n="nav_articles">Мақалалар</a>
-          <a href={`/${lang}/works`} data-i18n="nav_works">Жұмыстар</a>
-          <a href={`/${lang}/about`} data-i18n="nav_about">Жоба туралы</a>
-        </nav>
+        <div class="lang-switcher">
+          <button class={`lang-btn${lang === 'kk' ? ' active' : ''}`} data-lang="kk">ҚАЗ</button>
+          <button class={`lang-btn${lang === 'ru' ? ' active' : ''}`} data-lang="ru">РУС</button>
+          <button class={`lang-btn${lang === 'en' ? ' active' : ''}`} data-lang="en">ENG</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="theme-reveal" id="themeReveal" aria-hidden="true"></div>
+
+    <div class="nav-fab-wrap" id="navFabWrap">
+      <div class="nav-fab-menu" id="navFabMenu">
+        <a href={`/${lang}/`} data-i18n="nav_articles">Мақалалар</a>
+        <a href={`/${lang}/works`} data-i18n="nav_works">Жұмыстар</a>
+        <a href={`/${lang}/about`} data-i18n="nav_about">Жоба туралы</a>
         <button type="button" class="theme-toggle" id="themeToggle" aria-label={themeToggleLabel[lang] ?? themeToggleLabel.kk}>
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="4"/>
@@ -57,14 +73,18 @@ const themeToggleLabel: Record<string, string> = {
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
+          <span>{themeToggleLabel[lang] ?? themeToggleLabel.kk}</span>
         </button>
-        <div class="lang-switcher">
-          <button class={`lang-btn${lang === 'kk' ? ' active' : ''}`} data-lang="kk">ҚАЗ</button>
-          <button class={`lang-btn${lang === 'ru' ? ' active' : ''}`} data-lang="ru">РУС</button>
-          <button class={`lang-btn${lang === 'en' ? ' active' : ''}`} data-lang="en">ENG</button>
-        </div>
       </div>
-    </header>
+      <button type="button" class="nav-fab" id="navFabBtn" aria-haspopup="true" aria-expanded="false" aria-label={navMenuLabel[lang] ?? navMenuLabel.kk}>
+        <svg class="icon-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </button>
+    </div>
 
     <slot />
 
@@ -110,6 +130,7 @@ const themeToggleLabel: Record<string, string> = {
   <script src="/scripts/i18n.js" is:inline></script>
   <script src="/scripts/session.js" is:inline></script>
   <script src="/scripts/theme.js" is:inline></script>
+  <script src="/scripts/nav.js" is:inline></script>
   <slot name="scripts" />
 </body>
 </html>

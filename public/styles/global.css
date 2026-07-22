@@ -58,6 +58,20 @@
 
 .is-hidden { display: none !important; }
 
+/* ─── Круг-реветл при смене темы ──────────────── */
+.theme-reveal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0);
+    z-index: 9998;
+}
+
 body {
     background-color: var(--color-bg);
     color: var(--color-text);
