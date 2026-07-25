@@ -13,6 +13,12 @@ const pageTitle: Record<string, string> = {
   en: 'About the Project',
 };
 
+const kicker: Record<string, string> = {
+  kk: 'Тарих пен есте сақтау',
+  ru: 'История и память',
+  en: 'History and Remembrance',
+};
+
 const missionText: Record<string, string[]> = {
   kk: [
     'Ашаршылық (1930–1933), саяси қуғын-сүргін және Семей ядролық полигонынан зардап шеккендердің естеліктері арқылы қазақ халқының бастан кешкен тарихы мен қасіретін баяндаймыз.',
@@ -31,28 +37,152 @@ const missionText: Record<string, string[]> = {
   ],
 };
 
+const polygon: Record<string, { title: string; text: string; stat1: string; stat1Label: string; stat2: string; stat2Label: string }> = {
+  kk: {
+    title: 'Семей ядролық полигоны',
+    text: '1949 жылдан 1989 жылға дейін Семей ядролық полигонында 456 ядролық және термоядролық сынақ өткізілді. Қырық жылдан астам уақыт бойы жалғасқан бұл сынақтар маңайдағы Қарағанды, Павлодар және Семей өңірлерінің тұрғындарына орасан зор зиян келтірді.',
+    stat1: '456', stat1Label: 'ядролық сынақ',
+    stat2: '40+', stat2Label: 'жыл сынақ жүргізілді',
+  },
+  ru: {
+    title: 'Семипалатинский ядерный полигон',
+    text: 'С 1949 по 1989 год на Семипалатинском полигоне было проведено 456 ядерных и термоядерных испытаний. Более сорока лет эти испытания наносили непоправимый урон здоровью жителей Карагандинской, Павлодарской и Семейской областей.',
+    stat1: '456', stat1Label: 'ядерных испытаний',
+    stat2: '40+', stat2Label: 'лет испытаний',
+  },
+  en: {
+    title: 'The Semipalatinsk Nuclear Test Site',
+    text: 'Between 1949 and 1989, 456 nuclear and thermonuclear tests were conducted at the Semipalatinsk Test Site. For more than forty years, these tests inflicted lasting harm on the health of residents across the Karaganda, Pavlodar, and Semey regions.',
+    stat1: '456', stat1Label: 'nuclear tests',
+    stat2: '40+', stat2Label: 'years of testing',
+  },
+};
+
+const famine: Record<string, { title: string; text: string; stat1: string; stat1Label: string; stat2: string; stat2Label: string }> = {
+  kk: {
+    title: 'Ашаршылық (1930–1933)',
+    text: '1930–1933 жылдардағы ашаршылық – кеңестік ұжымдастыру саясатының салдары. Ол қазақ халқының шамамен 1,5 миллион өкілінің, яғни сол кездегі халықтың қырықтан астам пайызының өмірін қиды.',
+    stat1: '1,5 млн', stat1Label: 'құрбан болды',
+    stat2: '40%', stat2Label: 'халықтың',
+  },
+  ru: {
+    title: 'Голодомор (1930–1933)',
+    text: 'Голод 1930–1933 годов стал следствием советской политики коллективизации. Он унёс жизни около 1,5 миллиона казахов – более сорока процентов тогдашнего населения.',
+    stat1: '1,5 млн', stat1Label: 'жертв',
+    stat2: '40%', stat2Label: 'населения',
+  },
+  en: {
+    title: 'The Kazakh Famine (1930–1933)',
+    text: 'The famine of 1930–1933 was a direct consequence of Soviet collectivization policy. It claimed the lives of an estimated 1.5 million Kazakhs — more than forty percent of the population at the time.',
+    stat1: '1.5M', stat1Label: 'lives lost',
+    stat2: '40%', stat2Label: 'of the population',
+  },
+};
+
+const cta: Record<string, { title: string; text: string; btn: string }> = {
+  kk: {
+    title: 'Естелігіңізбен бөлісіңіз',
+    text: 'Егер сізде немесе жақындарыңызда осы тарихпен байланысты естелік болса, бізбен Instagram арқылы хабарласыңыз.',
+    btn: 'Хабарласу',
+  },
+  ru: {
+    title: 'Поделитесь своей историей',
+    text: 'Если у вас или ваших близких есть воспоминания, связанные с этой историей, свяжитесь с нами через Instagram.',
+    btn: 'Написать нам',
+  },
+  en: {
+    title: 'Share Your Story',
+    text: 'If you or your loved ones have memories connected to this history, reach out to us on Instagram.',
+    btn: 'Get in touch',
+  },
+};
+
+const credits: Record<string, string> = {
+  kk: 'Фото несиелері',
+  ru: 'Источники фотографий',
+  en: 'Photo credits',
+};
+
 const title = pageTitle[lang] ?? pageTitle.kk;
 const mission = missionText[lang] ?? missionText.kk;
+const p = polygon[lang] ?? polygon.kk;
+const f = famine[lang] ?? famine.kk;
+const c = cta[lang] ?? cta.kk;
 ---
 <Layout title={title} extraCss="/styles/article.css" lang={lang}>
   <main>
-    <div class="article-header">
-      <div class="article-header-inner">
-        <h1 class="article-title" data-i18n="nav_about">{title}</h1>
-        <div class="article-rule">
-          <span class="rule-line"></span>
-          <span class="rule-ornament">✦</span>
-          <span class="rule-line"></span>
-        </div>
+
+    <!-- ─── Cover ──────────────────────────────── -->
+    <div class="article-cover about-cover">
+      <img src="/images/about/about-steppe.jpg" alt="" class="article-cover-img">
+      <div class="article-cover-overlay"></div>
+      <div class="article-cover-content">
+        <p class="cover-kicker">{kicker[lang] ?? kicker.kk}</p>
+        <h1 class="article-title cover-title" data-i18n="nav_about">{title}</h1>
       </div>
     </div>
 
+    <!-- ─── Миссия ─────────────────────────────── -->
     <section class="articles-section">
       <div class="articles-inner">
         <div class="hero-mission">
-          {mission.map(p => <p>{p}</p>)}
+          {mission.map(m => <p>{m}</p>)}
         </div>
       </div>
     </section>
+
+    <!-- ─── Полигон ────────────────────────────── -->
+    <section class="about-history">
+      <div class="about-history-inner history-media-right">
+        <div class="history-text">
+          <h2>{p.title}</h2>
+          <p>{p.text}</p>
+          <div class="history-stats">
+            <div class="stat"><span class="stat-num">{p.stat1}</span><span class="stat-label">{p.stat1Label}</span></div>
+            <div class="stat"><span class="stat-num">{p.stat2}</span><span class="stat-label">{p.stat2Label}</span></div>
+          </div>
+        </div>
+        <figure class="history-figure">
+          <img src="/images/about/about-polygon.jpg" alt={p.title}>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ─── Ашаршылық ──────────────────────────── -->
+    <section class="about-history about-history-alt">
+      <div class="about-history-inner history-media-left">
+        <figure class="history-figure">
+          <img src="/images/about/about-famine.jpg" alt={f.title}>
+        </figure>
+        <div class="history-text">
+          <h2>{f.title}</h2>
+          <p>{f.text}</p>
+          <div class="history-stats">
+            <div class="stat"><span class="stat-num">{f.stat1}</span><span class="stat-label">{f.stat1Label}</span></div>
+            <div class="stat"><span class="stat-num">{f.stat2}</span><span class="stat-label">{f.stat2Label}</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA ────────────────────────────────── -->
+    <section class="about-cta">
+      <div class="about-cta-inner">
+        <h2>{c.title}</h2>
+        <p>{c.text}</p>
+        <a href="https://www.instagram.com/qazaq.mura.journal" target="_blank" rel="noopener" class="about-cta-btn">
+          {c.btn} →
+        </a>
+      </div>
+    </section>
+
+    <!-- ─── Фото несиелері ─────────────────────── -->
+    <p class="about-credits">
+      {credits[lang] ?? credits.kk}:
+      <a href="https://commons.wikimedia.org/wiki/File:Steppe_of_western_Kazakhstan_in_the_early_spring.jpg" target="_blank" rel="noopener">Carole a</a>,
+      <a href="https://commons.wikimedia.org/wiki/File:Crater_-_Flickr_-_The_Official_CTBTO_Photostream.jpg" target="_blank" rel="noopener">CTBTO Photostream</a>,
+      <a href="https://commons.wikimedia.org/wiki/File:ALAGolod.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>
+    </p>
+
   </main>
 </Layout>
