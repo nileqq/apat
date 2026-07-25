@@ -4,7 +4,7 @@ author: "Karipbek Kuyukov"
 cover: false   # ← укажи путь к фото в public/images/, когда оно появится
 kicker: "A conversation with Karipbek Kuyukov, an artist born without Arms, on the power of art, memory, and a world free of nuclear weapons."
 category: polygon
-date: 2023-03-10
+date: 2026-06-13
 excerpt: "Our featured guest today is Karipbek Kuyukov, a world-renowned Kazakh artist and activist for the international anti-nuclear movement. Born without arms due to the devastating consequences of the Semipalatinsk nuclear test site, he creates his powerful canvases using his mouth and toes, transforming his personal story into a universal symbol of the struggle for a world free of nuclear weapons."
 ---
 

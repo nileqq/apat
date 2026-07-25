@@ -4,7 +4,7 @@ author: "Bakytgul"
 cover: false   # ← укажи путь к фото в public/images/, когда оно появится
 kicker: "The trace of the Semipalatinsk Test Site, the victory of the spirit. An interview born out of tragedy."
 category: polygon
-date: 2022-12-09
+date: 2026-06-13
 excerpt: "Today’s character of Qazaq Mura journal is Bakytgul. A woman who had to go through an oncological disease that became one of the consequences of exposure to the Semipalatinsk Test Site. Despite pain, fear, and numerous hardships, she managed to put herself back together piece by piece, demonstrate incredible resilience, and overcome the illness. Her story is one of courage, willpower, and boundless love for life. Today we will introduce you to her inspiring life journey."
 ---
 
