@@ -79,21 +79,24 @@ const famine: Record<string, { title: string; text: string; stat1: string; stat1
   },
 };
 
-const cta: Record<string, { title: string; text: string; btn: string }> = {
+const cta: Record<string, { title: string; text: string; btn: string; btnEmail: string }> = {
   kk: {
     title: 'Естелігіңізбен бөлісіңіз',
-    text: 'Егер сізде немесе жақындарыңызда осы тарихпен байланысты естелік болса, бізбен Instagram арқылы хабарласыңыз.',
-    btn: 'Хабарласу',
+    text: 'Егер сізде немесе жақындарыңызда осы тарихпен байланысты естелік болса, бізбен Instagram немесе электрондық пошта арқылы хабарласыңыз.',
+    btn: 'Instagram',
+    btnEmail: 'Email жазу',
   },
   ru: {
     title: 'Поделитесь своей историей',
-    text: 'Если у вас или ваших близких есть воспоминания, связанные с этой историей, свяжитесь с нами через Instagram.',
-    btn: 'Написать нам',
+    text: 'Если у вас или ваших близких есть воспоминания, связанные с этой историей, свяжитесь с нами через Instagram или по электронной почте.',
+    btn: 'Instagram',
+    btnEmail: 'Написать письмо',
   },
   en: {
     title: 'Share Your Story',
-    text: 'If you or your loved ones have memories connected to this history, reach out to us on Instagram.',
-    btn: 'Get in touch',
+    text: 'If you or your loved ones have memories connected to this history, reach out to us on Instagram or by email.',
+    btn: 'Instagram',
+    btnEmail: 'Email us',
   },
 };
 
@@ -170,9 +173,14 @@ const c = cta[lang] ?? cta.kk;
       <div class="about-cta-inner">
         <h2>{c.title}</h2>
         <p>{c.text}</p>
-        <a href="https://www.instagram.com/qazaq.mura.journal" target="_blank" rel="noopener" class="about-cta-btn">
-          {c.btn} →
-        </a>
+        <div class="about-cta-actions">
+          <a href="https://www.instagram.com/qazaq.mura.journal" target="_blank" rel="noopener" class="about-cta-btn">
+            {c.btn} →
+          </a>
+          <a href="mailto:qazaq.mura.journal@gmail.com" class="about-cta-btn">
+            {c.btnEmail} →
+          </a>
+        </div>
       </div>
     </section>
 

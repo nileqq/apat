@@ -14,6 +14,12 @@ Through memories passed down by Meruert's maternal grandparents, she recounts th
 
 In Kazakhstan, triggered by Stalin's collectivization policies, the famine claimed the lives of an estimated 1.5-2.3 million people, with approximately 1.3-1.5 million ethnic Kazakhs perishing. More than 600,000 Kazakhs fled their homeland in search of survival, many crossing into neighboring China.
 
+<div class="stat-row">
+  <div class="stat-block"><span class="stat-num">1.5–2.3M</span><span class="stat-label">famine victims</span></div>
+  <div class="stat-block"><span class="stat-num">600,000+</span><span class="stat-label">Kazakhs fled to China</span></div>
+  <div class="stat-block"><span class="stat-num">1930–1933</span><span class="stat-label">years of the famine</span></div>
+</div>
+
 Beyond documenting one family's journey, the interview reflects the experiences of thousands of Kazakh families who endured famine, displacement, and political persecution. Meruert discusses how these stories shaped her understanding of history, identity, and resilience, emphasizing the importance of preserving oral histories so that future generations can learn not only historical facts, but also the human experiences behind them.
 
 ## About Herself
@@ -33,7 +39,7 @@ Beyond documenting one family's journey, the interview reflects the experiences 
 }
 
 @Meruert {
-    It all began with the collectivization campaign in the mid 1930s, when the Soviet government confiscated the belongings and livestock of Kazakh families. To escape these policies, my great-grandparents decided to flee to China. My maternal grandmother was about 12 years old at the time. They settled in Kulja, in China's Xinjiang region.
+    It all began with the collectivization campaign in the mid 1930s, when the Soviet government confiscated the belongings and livestock of Kazakh families. To escape these policies, my great-grandparents decided to flee to China. My maternal grandmother was about 12 years old at the time. They settled in <span class="term" title="Kulja (present-day Yining) is a city on the banks of the Ili River and the administrative center of the Ili Kazakh Autonomous Prefecture in Xinjiang.">Kulja</span>, in China's <span class="term" title="Xinjiang is an autonomous region in northwestern China bordering Kazakhstan. Many Kazakhs fleeing the famine of the 1930s settled here.">Xinjiang</span> region.
 }
 
 @Interviewer {
@@ -43,7 +49,7 @@ Beyond documenting one family's journey, the interview reflects the experiences 
 @Meruert {
     My family was not alone. They were part of a much larger group of Kazakh families fleeing together.
     Some people travelled on horseback, while others walked for long distances because there were not enough horses for everyone. Many of them were children.
-    They crossed the Ili River and travelled through the mountains before finally reaching Xinjiang.
+    They crossed the <span class="term" title="The Ili River rises in China's Xinjiang region and flows through Kazakhstan's Almaty region to Lake Balkhash. It served as the main border-crossing point both for those fleeing the famine and for those who later returned.">Ili River</span> and travelled through the mountains before finally reaching Xinjiang.
     The journey was exhausting. For much of the way, they walked barefoot. Whenever someone became too tired to continue, they would ride on a horse or in a cart for a short distance before continuing on foot.
     It was an incredibly difficult journey, but they had no other choice.
 }
@@ -172,3 +178,11 @@ Beyond documenting one family's journey, the interview reflects the experiences 
     I see it differently. These stories are difficult, but they are part of who we are. They create a connection between generations.
     If we stop telling them, that connection will disappear. History deserves to be remembered. That is why projects like Qazaq Mura are so important. They preserve memories that cannot be found in textbooks.
 }
+
+## Sources
+
+<ol class="references-list">
+  <li><em>Kazakh famine of 1930–1933</em>. Wikipedia — <a href="https://en.wikipedia.org/wiki/Kazakh_famine_of_1930%E2%80%931933" target="_blank" rel="noopener">en.wikipedia.org/wiki/Kazakh_famine_of_1930–1933</a></li>
+  <li><em>Ili River</em>. Wikipedia — <a href="https://en.wikipedia.org/wiki/Ili_river" target="_blank" rel="noopener">en.wikipedia.org/wiki/Ili_river</a></li>
+  <li><em>Yining (Kulja)</em>. Wikipedia — <a href="https://en.wikipedia.org/wiki/Yining" target="_blank" rel="noopener">en.wikipedia.org/wiki/Yining</a></li>
+</ol>
