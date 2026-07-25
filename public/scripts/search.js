@@ -166,14 +166,15 @@
             resultsBox.innerHTML = results.map(({ item }) => {
                 const year = new Date(item.date).getFullYear();
                 const badge = item.type === 'article'
-                    ? `<span class="article-tag tag-${item.category}">${escapeHtml(item.categoryLabel)}</span>`
-                    : `<span class="article-tag tag-work">${escapeHtml(t.work)}</span>`;
+                    ? `<span class="entry-eyebrow eyebrow-${item.category}">${escapeHtml(item.categoryLabel)}</span>`
+                    : `<span class="entry-eyebrow eyebrow-work">${escapeHtml(t.work)}</span>`;
                 const excerpt = item.excerpt || buildSnippet(item.body, terms, 170);
 
                 return `
                     <a href="${item.url}" class="article-entry">
                         <div class="entry-meta">
                             ${badge}
+                            <span class="entry-separator" aria-hidden="true">◆</span>
                             <span class="entry-date">${year}</span>
                         </div>
                         <h2 class="entry-title">${escapeHtml(item.title)}</h2>

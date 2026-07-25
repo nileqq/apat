@@ -20,12 +20,6 @@ const articles = allArticles
   }))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const categoryTag: Record<string, string> = {
-  repression: 'tag-repression',
-  polygon:    'tag-polygon',
-  famine:     'tag-famine',
-};
-
 const categoryLabels: Record<string, Record<string, string>> = {
   kk: { repression: 'Репрессия',  polygon: 'Полигон', famine: 'Голодомор' },
   ru: { repression: 'Репрессии',  polygon: 'Полигон', famine: 'Голодомор' },
@@ -106,9 +100,10 @@ const mission = missionText[lang] ?? missionText.kk;
                 data-category={article.data.category}
               >
                 <div class="entry-meta">
-                  <span class={`article-tag ${categoryTag[article.data.category]}`}>
+                  <span class={`entry-eyebrow eyebrow-${article.data.category}`}>
                     {categoryLabel[article.data.category]}
                   </span>
+                  <span class="entry-separator" aria-hidden="true">◆</span>
                   <span class="entry-date" data-date={article.data.date.toISOString().slice(0, 10)}>
                     {article.data.date.getFullYear()}
                   </span>
