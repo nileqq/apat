@@ -9,14 +9,14 @@
 /* ─── Переменные ─────────────────────────────── */
 /* Светлая тема (по умолчанию): бежевый/белый/чёрный */
 :root {
-    --color-bg:        #f7f2e8;
+    --color-bg:        #fbf9f4;
     --color-surface:   #ffffff;
-    --color-text:      #2a2420;
-    --color-muted:     #7a6d58;
-    --color-faint:     #a89a80;
-    --color-border:    #e4dac2;
+    --color-text:      #1f1c17;
+    --color-muted:     #6b6255;
+    --color-faint:     #9c9182;
+    --color-border:    #e8e2d4;
     --color-accent:    #a8543f;
-    --color-primary:   #1c1712;
+    --color-primary:   #171310;
     --color-on-accent: #faf3e8;
 
     --color-danger:        #b23b3b;
@@ -119,6 +119,12 @@ main { flex: 1; }
     gap: 1.25rem;
 }
 
+.masthead-top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
 .masthead-title {
     font-family: var(--font-serif);
     font-size: 2rem;
@@ -128,7 +134,9 @@ main { flex: 1; }
 }
 
 .masthead-sub {
-    font-size: 0.88rem;
+    font-family: var(--font-lora);
+    font-style: italic;
+    font-size: 0.9rem;
     color: var(--color-muted);
     line-height: 1.6;
     max-width: 520px;
@@ -391,56 +399,7 @@ main { flex: 1; }
     gap: 1.5rem;
 }
 
-/* ─── Герой ──────────────────────────────────── */
-.hero {
-    padding: 5rem 2rem 4rem;
-    border-bottom: 1px solid var(--color-border);
-    text-align: center;
-}
-
-.hero-inner {
-    max-width: 640px;
-    margin: 0 auto;
-}
-
-.hero-title {
-    font-family: var(--font-serif);
-    font-size: clamp(3rem, 8vw, 5rem);
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: var(--color-primary);
-    line-height: 1;
-    margin-bottom: 1.5rem;
-}
-
-.hero-divider {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    max-width: 160px;
-    margin: 0 auto 1.5rem;
-}
-
-.divider-line {
-    flex: 1;
-    height: 1px;
-    background: var(--color-border);
-}
-
-.divider-ornament {
-    color: var(--color-accent);
-    font-size: 0.65rem;
-}
-
-.hero-subtitle {
-    font-family: var(--font-lora);
-    font-style: italic;
-    font-size: 1.1rem;
-    color: var(--color-muted);
-    line-height: 1.6;
-    margin-bottom: 2.5rem;
-}
-
+/* ─── Текстовый блок (см. about.astro) ───────── */
 .hero-mission {
     text-align: left;
     display: flex;
@@ -460,57 +419,45 @@ main { flex: 1; }
     color: var(--color-text);
 }
 
-.hero-search {
-    display: flex;
-    align-items: center;
-    border: 1px solid var(--color-border);
-    border-radius: 2px;
-    background: var(--color-surface);
-    transition: border-color 0.2s;
-}
-
-.hero-search:focus-within {
-    border-color: var(--color-accent);
-}
-
-.hero-search #searchInput {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 0.8rem 1rem;
-    font-size: 0.95rem;
-    font-family: var(--font-sans);
-    background: transparent;
-    color: var(--color-text);
-    width: 100%;
-}
-
-.hero-search #searchInput::placeholder { color: var(--color-faint); }
-
-.hero-search .search-btn {
-    background: none;
-    border: none;
-    padding: 0 1rem;
-    font-size: 1.1rem;
-    color: var(--color-muted);
-    cursor: pointer;
-    transition: color 0.2s;
-    line-height: 1;
-}
-
-.hero-search .search-btn:hover { color: var(--color-accent); }
-
-/* ─── Заголовок раздела статей ───────────────── */
-.articles-header {
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--color-border);
-}
-
 .articles-empty {
     text-align: center;
     color: var(--color-muted);
     padding: 3rem 0;
     font-size: 0.95rem;
+}
+
+/* ─── О проекте (главная) ────────────────────── */
+.about-section {
+    border-top: 1px solid var(--color-border);
+    padding: 3rem 2rem;
+}
+
+.about-inner {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.about-title {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 1.1rem;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.about-text p {
+    font-family: var(--font-lora);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--color-text);
 }
 
 /* ─── Журнальный футер ───────────────────────── */
@@ -619,7 +566,6 @@ main { flex: 1; }
     .masthead-controls { flex-direction: column; align-items: flex-start; }
     #searchInput { width: 140px; }
     .entry-title { font-size: 1.15rem; }
-    .hero { padding: 3rem 1.25rem 2.5rem; }
-    .hero-title { letter-spacing: 0.08em; }
     .hero-mission { padding: 1.25rem; }
+    .about-section { padding: 2rem 1.25rem; }
 }

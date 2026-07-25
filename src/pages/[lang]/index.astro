@@ -45,51 +45,47 @@ const missionText: Record<string, string[]> = {
   ],
 };
 const mission = missionText[lang] ?? missionText.kk;
+
+const aboutTitleText: Record<string, string> = {
+  kk: 'Жоба туралы',
+  ru: 'О проекте',
+  en: 'About the Project',
+};
+const aboutTitle = aboutTitleText[lang] ?? aboutTitleText.kk;
 ---
 <Layout title="Qazaq Mura" lang={lang}>
 
   <main>
 
-    <!-- ─── Герой ─────────────────────────────── -->
-    <section class="hero">
-      <div class="hero-inner">
-
-        <h1 class="hero-title">QAZAQ MURA</h1>
-
-        <div class="hero-divider">
-          <span class="divider-line"></span>
-          <span class="divider-ornament">✦</span>
-          <span class="divider-line"></span>
+    <!-- ─── Мастхед ────────────────────────────── -->
+    <div class="masthead">
+      <div class="masthead-inner">
+        <div class="masthead-top">
+          <h1 class="masthead-title">Qazaq Mura</h1>
+          <p class="masthead-sub">
+            Қазақ халқының қайғысы мен қасіретіне арналған журнал
+          </p>
         </div>
 
-        <p class="hero-subtitle">
-          Қазақ халқының қайғысы мен қасіретіне арналған журнал
-        </p>
-
-        <div class="hero-mission">
-          {mission.map(p => <p>{p}</p>)}
-        </div>
-
-        <div class="hero-search">
-          <input type="text" id="searchInput" placeholder="Іздеу..." data-i18n-ph="search_placeholder">
-          <button class="search-btn" aria-label="Іздеу">→</button>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ─── Статьи ─────────────────────────────── -->
-    <section class="articles-section">
-      <div class="articles-inner">
-
-        <div class="articles-header">
+        <div class="masthead-controls">
           <div class="filter-pills">
             <button class="filter-pill active" data-filter="all"        data-i18n="filter_all">Барлығы</button>
             <button class="filter-pill"        data-filter="repression" data-i18n="tag_repression">Репрессия</button>
             <button class="filter-pill"        data-filter="polygon"    data-i18n="tag_polygon">Полигон</button>
             <button class="filter-pill"        data-filter="famine"     data-i18n="tag_famine">Голодомор</button>
           </div>
+
+          <div class="search-inline">
+            <input type="text" id="searchInput" placeholder="Іздеу..." data-i18n-ph="search_placeholder">
+            <button class="search-btn" aria-label="Іздеу">→</button>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <!-- ─── Статьи ─────────────────────────────── -->
+    <section class="articles-section">
+      <div class="articles-inner">
 
         <div id="articleList">
           {articles.length > 0 ? (
@@ -124,6 +120,16 @@ const mission = missionText[lang] ?? missionText.kk;
 
         <div id="searchResults" class="is-hidden"></div>
 
+      </div>
+    </section>
+
+    <!-- ─── Жоба туралы ────────────────────────── -->
+    <section class="about-section">
+      <div class="about-inner">
+        <h2 class="about-title" data-i18n="nav_about">{aboutTitle}</h2>
+        <div class="about-text">
+          {mission.map(p => <p>{p}</p>)}
+        </div>
       </div>
     </section>
 
