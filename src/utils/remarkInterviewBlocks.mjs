@@ -13,15 +13,48 @@ function visit(node, visitor) {
   }
 }
 
+// Handles paragraphs whose body contains inline markup (e.g. a term-tooltip
+// <span>), which splits the paragraph into several child nodes instead of a
+// single text node.
 function transformInterviewLine(node) {
   if (node.type !== 'paragraph') return;
 
-  const textNodes = node.children?.filter((child) => child.type === 'text') ?? [];
-  if (textNodes.length !== 1) return;
+  const children = node.children ?? [];
+  if (children.length === 0) return;
 
-  const parsed = parseInterviewText(textNodes[0].value);
-  if (!parsed) return;
+  const first = children[0];
+  if (first.type !== 'text') return;
 
+  const openMatch = first.value.match(/^@([^\s{]+)\s*\{([\s\S]*)$/);
+
+  if (!openMatch) {
+    if (children.length !== 1) return;
+    const parsed = parseInterviewText(first.value);
+    if (!parsed) return;
+    applyInterviewLine(node, parsed.speaker, [{ type: 'text', value: parsed.text }]);
+    return;
+  }
+
+  const speaker = openMatch[1].trim();
+  if (!speaker) return;
+
+  const bodyChildren = [...children];
+  bodyChildren[0] = { type: 'text', value: openMatch[2].replace(/^\s+/, '') };
+
+  const last = bodyChildren[bodyChildren.length - 1];
+  if (last.type !== 'text') return;
+  const closeMatch = last.value.match(/^([\s\S]*?)\}\s*$/);
+  if (!closeMatch) return;
+  bodyChildren[bodyChildren.length - 1] = { type: 'text', value: closeMatch[1].replace(/\s+$/, '') };
+
+  const trimmedChildren = bodyChildren.filter(
+    (child, i) => child.type !== 'text' || child.value.length > 0 || (i !== 0 && i !== bodyChildren.length - 1)
+  );
+
+  applyInterviewLine(node, speaker, trimmedChildren);
+}
+
+function applyInterviewLine(node, speaker, bodyChildren) {
   node.data ||= {};
   node.data.hName = 'div';
   node.data.hProperties = { className: ['interview-line'] };
@@ -32,12 +65,9 @@ function transformInterviewLine(node) {
         hName: 'span',
         hProperties: { className: ['interview-speaker'] },
       },
-      children: [{ type: 'text', value: parsed.speaker }],
+      children: [{ type: 'text', value: speaker }],
     },
-    {
-      type: 'text',
-      value: parsed.text,
-    },
+    ...bodyChildren,
   ];
 }
 
